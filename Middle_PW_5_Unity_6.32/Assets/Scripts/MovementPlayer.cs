@@ -6,6 +6,8 @@ public class MovementPlayer : InputData
 
     private Rigidbody rb;
 
+    private Vector3 direction; 
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -14,8 +16,16 @@ public class MovementPlayer : InputData
     void Update()
     {
         Vector3 moveVector = new Vector3(-inputVector.x, 0, -inputVector.y);
-        
-        if (inputVector != null)
-        rb.MovePosition(rb.position + moveVector * speed * Time.deltaTime);
+
+        if (inputVector != Vector2.zero)
+        {
+            // Перемещение
+            rb.MovePosition(rb.position + moveVector * speed * Time.deltaTime);
+
+            // Направление по ходу движения
+            direction = new Vector3(-inputVector.x, 0, -inputVector.y);
+
+            transform.LookAt(transform.position + direction);
+        }
     }
 }

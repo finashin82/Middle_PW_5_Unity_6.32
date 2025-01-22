@@ -7,8 +7,6 @@ public class InputData : MonoBehaviour
 
     public Vector2 inputVector;
 
-    //public bool isAttack;
-
     private void Awake()
     {
         // Активируем контроллер ввода
@@ -47,7 +45,7 @@ public class InputData : MonoBehaviour
 
     public void OnClickCanceled(InputAction.CallbackContext context)
     {
-        inputVector = Vector2.zero;
+        inputVector = Vector2.zero;        
     }
 
     public void OnPressStarted(InputAction.CallbackContext context)
