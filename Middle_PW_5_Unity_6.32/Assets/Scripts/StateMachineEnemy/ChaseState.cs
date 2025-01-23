@@ -12,12 +12,12 @@ public class ChaseState : State
 
     public override void Enter()
     {
-        RSM.Anim.SetBool("isWalk", true);
+        RSM.Anim.SetBool("isRun", true);
     }
 
     public override void Exit()
     {
-        RSM.Anim.SetBool("isWalk", false);        
+        RSM.Anim.SetBool("isRun", false);        
     }
 
     public override void Update()

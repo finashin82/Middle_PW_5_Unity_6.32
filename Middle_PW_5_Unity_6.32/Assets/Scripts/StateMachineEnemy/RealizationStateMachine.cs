@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 using static UnityEngine.GraphicsBuffer;
 using static UnityEngine.Rendering.HableCurve;
 
@@ -7,25 +8,24 @@ public class RealizationStateMachine : MonoBehaviour
     public Transform target;
     public Transform trans;
 
-    private Transform centerCircle;
-
     public StateMachine StateMachine;
     public IdleState IdleState;
+    public WalkState WalkState;
     public ChaseState ChaseState;
     public AttackState AttackState;
 
     [SerializeField] private float distanceToChasing = 3f;
     [SerializeField] private float distanceToAttack = 1f;
 
-    //private State currentState;
+    [SerializeField] private GameObject[] trackingPoints;
 
     private Vector3 distance;
 
+    private NavMeshAgent agent;
 
-    [SerializeField] private int segmentsInCircle = 50;
-    private float radiusCircleToChase;
+    private int randPoint;
 
-    private LineRenderer lineRenderer;
+    private bool isChase;
 
     public Animator Anim { get; set; }    
 
@@ -33,6 +33,7 @@ public class RealizationStateMachine : MonoBehaviour
     {
         StateMachine = new StateMachine();
         IdleState = new IdleState();
+        WalkState = new WalkState(this);
         ChaseState = new ChaseState(this);
         AttackState = new AttackState(this);
 
@@ -41,6 +42,8 @@ public class RealizationStateMachine : MonoBehaviour
         Anim = GetComponent<Animator>();
 
         trans = GetComponent<Transform>();
+
+        agent = GetComponent<NavMeshAgent>();
     }
 
     void Update()
@@ -61,7 +64,11 @@ public class RealizationStateMachine : MonoBehaviour
 
         if (distance.magnitude > distanceToChasing)
         {
-            StateMachine.ChangeState(IdleState);
+            StateMachine.ChangeState(WalkState);
+
+            //randPoint = new Random.Range(0);
         }
+
+        
     }
 }
