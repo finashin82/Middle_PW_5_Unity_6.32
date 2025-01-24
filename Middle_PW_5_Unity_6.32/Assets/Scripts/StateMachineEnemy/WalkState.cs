@@ -20,14 +20,7 @@ public class WalkState : State
     }
 
     public override void Update()
-    {
-        //Vector3 direction = RSM.target.position - RSM.transform.position;
-        //direction.Normalize();
-
-        //Vector3 targetPosition = RSM.trans.transform.position;
-
-        //Vector3 newPosition = new Vector3(RSM.target.transform.position.x, targetPosition.y, RSM.target.transform.position.z);
-
-        //RSM.transform.LookAt(newPosition);
+    {        
+        
     }
 }

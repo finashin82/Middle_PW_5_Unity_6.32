@@ -17,15 +17,21 @@ public class RealizationStateMachine : MonoBehaviour
     [SerializeField] private float distanceToChasing = 3f;
     [SerializeField] private float distanceToAttack = 1f;
 
+    [SerializeField] private float timeToIdle = 1f;
+
     [SerializeField] private GameObject[] trackingPoints;
 
-    private Vector3 distance;
+    private Vector3 distanceToPlayer;
+    private Vector3 distanceToPoint;
 
-    private NavMeshAgent agent;
+    private float currentTime;
+
+    public NavMeshAgent agent;
 
     private int randPoint;
 
-    private bool isChase;
+    private bool isFree;
+    private bool isAgentDestination;
 
     public Animator Anim { get; set; }    
 
@@ -44,31 +50,84 @@ public class RealizationStateMachine : MonoBehaviour
         trans = GetComponent<Transform>();
 
         agent = GetComponent<NavMeshAgent>();
+
+        currentTime = timeToIdle;
+
+        isFree = true;
+        isAgentDestination = true;
     }
 
     void Update()
     {
         StateMachine.CurrentState.Update();
 
-        distance = transform.position - target.position;
+        // Дистанция до плеера
+        distanceToPlayer = transform.position - target.position;
 
-        if (distance.magnitude < distanceToChasing && distance.magnitude > distanceToAttack)
+        // Дистанция до точки отдыха
+        distanceToPoint = transform.position - trackingPoints[randPoint].transform.position;
+
+        // Условия преследования
+        if (distanceToPlayer.magnitude < distanceToChasing && distanceToPlayer.magnitude > distanceToAttack)
         {
             StateMachine.ChangeState(ChaseState);
         }
 
-        if (distance.magnitude <= distanceToAttack)
+        // Условие атаки
+        if (distanceToPlayer.magnitude <= distanceToAttack)
         {
             StateMachine.ChangeState(AttackState);
         }
 
-        if (distance.magnitude > distanceToChasing)
+        // Условия патрулирования
+        if (distanceToPlayer.magnitude > distanceToChasing)
         {
+            // Выбираем случайную точку
+            if (isFree)
+            {
+                randPoint = Random.Range(0, 7);
+
+                isFree = false;                
+            }
+
+            // Запуск состояния патрулирования
             StateMachine.ChangeState(WalkState);
 
-            //randPoint = new Random.Range(0);
-        }
+            if (isAgentDestination)
+            {
+                // Движение к точке
+                agent.destination = trackingPoints[randPoint].transform.position;
+            }
 
-        
+            // Отдых у точки
+            if (distanceToPoint.magnitude <= agent.stoppingDistance)
+            {
+                isAgentDestination = false;
+
+                StateMachine.ChangeState(IdleState);
+
+                TimerToIdlePoint();
+            }
+            else 
+            {
+                isAgentDestination = true;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Таймер отдыха у точки
+    /// </summary>
+    private void TimerToIdlePoint()
+    {
+        if (currentTime >= 0)
+        {
+            currentTime -= Time.deltaTime;
+        }
+        else
+        {
+            isFree = true;
+            currentTime = timeToIdle;
+        }
     }
 }
