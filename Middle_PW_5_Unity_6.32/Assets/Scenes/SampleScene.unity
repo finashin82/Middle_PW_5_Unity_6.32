@@ -313,7 +313,7 @@ GameObject:
   m_Layer: 0
   m_Name: TrackingPoints7
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -344,7 +344,7 @@ GameObject:
   m_Layer: 0
   m_Name: TrackingPoints1
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -446,19 +446,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.59030867, y: 1.8458695, z: 0.34737515}
   m_Center: {x: 0.018526793, y: 0.90711856, z: 0.025290608}
---- !u!114 &219801627
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219801624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa92bec164f21194f96451099545c883, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inputVector: {x: 0, y: 0}
 --- !u!114 &219801628
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -473,11 +460,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputVector: {x: 0, y: 0}
   speed: 3
---- !u!4 &219801630 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6d044623c66a27547bf47fab69adc396, type: 3}
-  m_PrefabInstance: {fileID: 1015240827}
-  m_PrefabAsset: {fileID: 0}
 --- !u!54 &219801631
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -510,32 +492,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: d0c4b7b346198804db2e9332bb8fc465, type: 3}
   m_PrefabInstance: {fileID: 1783014783}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &314330958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 314330955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26b0db7c4bf1964419e109d4bad866ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 219801630}
-  trans: {fileID: 0}
-  distanceToChasing: 3
-  distanceToAttack: 1
-  timeToIdle: 3
-  trackingPoints:
-  - {fileID: 208293540}
-  - {fileID: 1815545008}
-  - {fileID: 1141630378}
-  - {fileID: 2037458698}
-  - {fileID: 837434088}
-  - {fileID: 1266986727}
-  - {fileID: 144822877}
-  agent: {fileID: 0}
 --- !u!65 &314330959
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -606,6 +562,136 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &314330966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314330955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4cbece5b0298d843b778837551fee82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _state:
+  - {fileID: 314330971}
+  - {fileID: 314330970}
+  - {fileID: 314330969}
+--- !u!114 &314330969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314330955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e54ad9143d343c848aa1c1aca7397c75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _player: {fileID: 219801624}
+  _radius: 3
+--- !u!114 &314330970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314330955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c71c06b90707d844aacde0db4b54afca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _player: {fileID: 219801624}
+  _radius: 2
+--- !u!114 &314330971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314330955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103fdd3a0d9aef043af4188c33dca052, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _player: {fileID: 219801624}
+  _radius: 1
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1464,7 +1550,7 @@ GameObject:
   m_Layer: 0
   m_Name: TrackingPoints5
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1611,7 +1697,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6d044623c66a27547bf47fab69adc396, type: 3}
       propertyPath: m_Name
-      value: character
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 6d044623c66a27547bf47fab69adc396, type: 3}
       propertyPath: m_IsActive
@@ -1632,9 +1718,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6d044623c66a27547bf47fab69adc396, type: 3}
       insertIndex: -1
       addedObject: {fileID: 219801628}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6d044623c66a27547bf47fab69adc396, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 219801627}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6d044623c66a27547bf47fab69adc396, type: 3}
       insertIndex: -1
       addedObject: {fileID: 219801625}
@@ -1711,7 +1794,7 @@ GameObject:
   m_Layer: 0
   m_Name: TrackingPoints3
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1799,7 +1882,7 @@ GameObject:
   m_Layer: 0
   m_Name: TrackingPoints6
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2425,7 +2508,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0c4b7b346198804db2e9332bb8fc465, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 314330958}
+      addedObject: {fileID: 314330966}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0c4b7b346198804db2e9332bb8fc465, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 314330971}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0c4b7b346198804db2e9332bb8fc465, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 314330970}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0c4b7b346198804db2e9332bb8fc465, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 314330969}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0c4b7b346198804db2e9332bb8fc465, type: 3}
       insertIndex: -1
       addedObject: {fileID: 314330959}
@@ -2448,7 +2540,7 @@ GameObject:
   m_Layer: 0
   m_Name: TrackingPoints2
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2884,7 +2976,7 @@ GameObject:
   m_Layer: 0
   m_Name: TrackingPoints4
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

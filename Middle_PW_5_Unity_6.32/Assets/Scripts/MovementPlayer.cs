@@ -8,9 +8,13 @@ public class MovementPlayer : InputData
 
     private Vector3 direction; 
 
+    private Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        animator = GetComponent<Animator>();
     }
 
     void Update()
@@ -26,6 +30,12 @@ public class MovementPlayer : InputData
             direction = new Vector3(-inputVector.x, 0, -inputVector.y);
 
             transform.LookAt(transform.position + direction);
+
+            animator.SetBool("isWalk", true);
+        }
+        else
+        {
+            animator.SetBool("isWalk", false);
         }
     }
 }
