@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StateController : MonoBehaviour
 {
-    // Список с состояниями с интерфейсом
+    // Список с состояниями
     [SerializeField] private List<State> _state;   
    
     void Update()

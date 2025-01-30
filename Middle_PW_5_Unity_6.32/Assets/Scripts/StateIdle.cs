@@ -15,12 +15,18 @@ public class StateIdle : State
 
     public override float Evaluate()
     {
-        var distFloat = Vector3.Distance(transform.position, _player.transform.position);
+
+
+        var distFloat = Vector3.Distance(this.transform.position, _player.transform.position);
 
         var clamp = Mathf.Clamp(distFloat, 0, _radius);
 
-        var dist = _curve.Evaluate((_radius - clamp) / _radius);
+        var dist = (_radius - clamp) / _radius;
 
-        return Mathf.Clamp01(dist);
+        return dist;
+
+        //return Mathf.Clamp01(dist);
+
+        //return (1 / (this.transform.position - _player.transform.position).magnitude);
     }
 }
