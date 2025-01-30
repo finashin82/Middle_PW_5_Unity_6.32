@@ -615,7 +615,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _player: {fileID: 219801624}
-  _radius: 3
+  _radius: 4
 --- !u!114 &314330970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -653,7 +653,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   _player: {fileID: 219801624}
-  _radius: 2
+  _radius: 3
 --- !u!114 &314330971
 MonoBehaviour:
   m_ObjectHideFlags: 0
