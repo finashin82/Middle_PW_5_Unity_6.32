@@ -9,14 +9,30 @@ public class StateChase : State
 
     [SerializeField] float _radius;
 
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    public override void Exit()
+    {
+        animator.SetBool("isRun", false);
+    }
+
     public override void Execute()
     {
         Debug.Log("Преследую");
 
-        Vector3 direction = _player.transform.position - transform.position;
-        direction.Normalize();
+        animator.SetBool("isRun", true);
+                
+        //Vector3 direction = _player.transform.position - transform.position;
+
+        //direction.Normalize();
 
         Vector3 newPosition = new Vector3(_player.transform.position.x, transform.position.y, _player.transform.position.z);
+
         transform.LookAt(newPosition);
     }
 
@@ -24,20 +40,10 @@ public class StateChase : State
     {
         var distFloat = Vector3.Distance(this.transform.position, _player.transform.position);
 
-        var clamp = Mathf.Clamp(distFloat, 1.1f, _radius);
+        var clamp = Mathf.Clamp(distFloat, 0, _radius);
 
-        var dist = (_radius - clamp) / _radius;
+        var dist = _curve.Evaluate((_radius - clamp) / _radius);
 
-        return dist;
-
-        //var distFloat = Vector3.Distance(transform.position, _player.transform.position);
-
-        //var clamp = Mathf.Clamp(distFloat, 0, _radius);
-
-        //var dist = _curve.Evaluate((_radius - clamp) / _radius);
-
-        //return Mathf.Clamp01(dist);
-
-        //    return (1 / (this.transform.position - _player.transform.position).magnitude);
+        return dist;       
     }
 }

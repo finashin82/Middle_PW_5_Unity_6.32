@@ -5,13 +5,15 @@ using UnityEngine;
 public class StateController : MonoBehaviour
 {
     // Список с состояниями
-    [SerializeField] private List<State> _state;   
+    [SerializeField] private List<State> _state;
+
+    private State stateCurrent = null;
    
     void Update()
     {        
         float maxRadius = 0;
 
-        State stateCurrent = null;
+        //State stateCurrent = null;
 
         foreach (var state in _state) 
         {
@@ -19,6 +21,9 @@ public class StateController : MonoBehaviour
 
             if (maxRadius < radius)
             {
+                // При смене состояния нужно, сначала, завершить все в текущем состоянии (например анимации)
+                if (stateCurrent != null) stateCurrent.Exit();
+
                 maxRadius = radius;
 
                 stateCurrent = state;
@@ -27,8 +32,8 @@ public class StateController : MonoBehaviour
 
         if (stateCurrent != null) 
         { 
-            stateCurrent.Execute(); 
-        }
+            stateCurrent.Execute();  
+        }        
     }
 }
 
