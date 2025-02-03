@@ -59,9 +59,6 @@ public class StateIdle : State
 
         animator.SetBool("isWalk", true);
 
-        // Дистанция до точки отдыха
-        distanceToPoint = transform.position - trackingPoints[randPoint].transform.position;
-
         // Выбираем случайную точку
         if (isFree)
         {
@@ -70,12 +67,12 @@ public class StateIdle : State
             isFree = false;
         }
 
-        
+        // Дистанция до точки отдыха
+        distanceToPoint = transform.position - trackingPoints[randPoint].transform.position;
 
-        // Движение к точке, если разрешено
+        // Направление на точку во время движения
         if (isAgentDestination)
-        {
-            // Поворот в сторону выбраной точки
+        {            
             Vector3 newPosition = new Vector3(agent.destination.x, transform.position.y, agent.destination.z);
             transform.LookAt(newPosition);
         }
@@ -85,7 +82,6 @@ public class StateIdle : State
         {
             isAgentDestination = false;
 
-            //agent.enabled = false;
             agent.isStopped = true;
 
             animator.SetBool("isWalk", false);
@@ -98,16 +94,12 @@ public class StateIdle : State
         {
             agent.isStopped = false;
 
-            //agent.enabled = true;
-
             agent.destination = trackingPoints[randPoint].transform.position;
 
             isAgentDestination = true;
 
             animator.SetBool("isWalk", true);
         }
-
-
     }
 
     public override float Evaluate()
