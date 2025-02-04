@@ -73,8 +73,8 @@ public class StateIdle : State
         // Ќаправление на точку во врем€ движени€
         if (isAgentDestination)
         {
-            Vector3 directionXY = new Vector3(agent.velocity.normalized.x, 0, agent.velocity.normalized.z);
-            Vector3 newPosition = transform.position + directionXY.normalized;
+            Vector3 directionXZ = new Vector3(agent.velocity.normalized.x, 0, agent.velocity.normalized.z);
+            Vector3 newPosition = transform.position + directionXZ.normalized;
             //Vector3 newPosition = transform.position + agent.velocity.normalized;
             transform.LookAt(newPosition);
 
