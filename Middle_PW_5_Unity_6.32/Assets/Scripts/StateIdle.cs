@@ -55,7 +55,7 @@ public class StateIdle : State
 
     public override void Execute()
     {
-        Debug.Log("Отдых");
+        Debug.Log("Патрулирование");
 
         animator.SetBool("isWalk", true);
 
@@ -72,9 +72,13 @@ public class StateIdle : State
 
         // Направление на точку во время движения
         if (isAgentDestination)
-        {            
-            Vector3 newPosition = new Vector3(agent.destination.x, transform.position.y, agent.destination.z);
+        {
+            Vector3 directionXY = new Vector3(agent.velocity.normalized.x, 0, agent.velocity.normalized.z);
+            Vector3 newPosition = transform.position + directionXY.normalized;
+            //Vector3 newPosition = transform.position + agent.velocity.normalized;
             transform.LookAt(newPosition);
+
+            Debug.Log($"agent.velocity.normalized: {agent.velocity.normalized}");
         }
 
         // Отдых у точки
