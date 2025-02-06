@@ -70,15 +70,12 @@ public class StateIdle : State
         // Дистанция до точки отдыха
         distanceToPoint = transform.position - trackingPoints[randPoint].transform.position;
 
-        // Направление на точку во время движения
+        // Направление движения по пути следования навмеш 
         if (isAgentDestination)
         {
             Vector3 directionXZ = new Vector3(agent.velocity.normalized.x, 0, agent.velocity.normalized.z);
             Vector3 newPosition = transform.position + directionXZ.normalized;
-            //Vector3 newPosition = transform.position + agent.velocity.normalized;
             transform.LookAt(newPosition);
-
-            Debug.Log($"agent.velocity.normalized: {agent.velocity.normalized}");
         }
 
         // Отдых у точки
