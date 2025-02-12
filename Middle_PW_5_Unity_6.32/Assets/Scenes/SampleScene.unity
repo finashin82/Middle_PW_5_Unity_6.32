@@ -221,7 +221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89715ad69b973a14899afa2c6730b30b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _scriptableObjectInstallers: []
+  _scriptableObjectInstallers:
+  - {fileID: 11400000, guid: 47a9d467f19d6c54691ecccc081e04e7, type: 2}
   _monoInstallers:
   - {fileID: 583079297}
   _installerPrefabs: []
@@ -561,6 +562,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 150396f8d56d64f45b0a35290ec01997, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &219801637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219801624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce64e36a57037d1489c6f19b52152c3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &330585543
@@ -1208,7 +1221,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3e81288e1b9894995ef4191a6135d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealthPlayer: 20
+  _playerStrikeForce: 5
+  _playerSpeed: 3
+  _playerHealth: 50
 --- !u!4 &583079298
 Transform:
   m_ObjectHideFlags: 0
@@ -1643,6 +1658,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6d044623c66a27547bf47fab69adc396, type: 3}
       insertIndex: -1
       addedObject: {fileID: 219801631}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 6d044623c66a27547bf47fab69adc396, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 219801637}
   m_SourcePrefab: {fileID: 100100000, guid: 6d044623c66a27547bf47fab69adc396, type: 3}
 --- !u!1001 &1066254449
 PrefabInstance:

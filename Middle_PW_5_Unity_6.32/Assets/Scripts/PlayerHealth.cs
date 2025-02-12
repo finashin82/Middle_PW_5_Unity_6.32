@@ -3,14 +3,13 @@ using Zenject;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [Inject] private MaxHealthPlayer _maxHealthPlayer;
+    [Inject] private PlayerSettings _playerSettings;
 
     void Start()
     {
-        Debug.Log($"Max Health Player {_maxHealthPlayer.Health}");
+        Debug.Log($"Player Health: {_playerSettings.Health}");
     }
 
-    // Update is called once per frame
     void Update()
     {
         
