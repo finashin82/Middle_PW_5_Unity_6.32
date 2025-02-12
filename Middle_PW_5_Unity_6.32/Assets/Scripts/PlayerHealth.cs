@@ -1,11 +1,13 @@
 using UnityEngine;
+using Zenject;
 
 public class PlayerHealth : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [Inject] private MaxHealthPlayer _maxHealthPlayer;
+
     void Start()
     {
-        
+        Debug.Log($"Max Health Player {_maxHealthPlayer.Health}");
     }
 
     // Update is called once per frame
