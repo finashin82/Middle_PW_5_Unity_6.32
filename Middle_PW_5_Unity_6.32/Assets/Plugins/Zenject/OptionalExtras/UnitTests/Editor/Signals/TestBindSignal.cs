@@ -40,7 +40,7 @@ namespace Zenject.Tests.Signals
             Container.BindSignal<FooSignal>().ToMethod(() => received = true);
             Container.ResolveRoots();
 
-            var signalBus = Container.Resolve<SignalBus>();
+            var signalBus = Container.Resolve<Signal>();
 
             Assert.That(!received);
             signalBus.Fire<FooSignal>();
@@ -57,7 +57,7 @@ namespace Zenject.Tests.Signals
             Container.BindSignal<FooSignal>().ToMethod(x => received = x);
             Container.ResolveRoots();
 
-            var signalBus = Container.Resolve<SignalBus>();
+            var signalBus = Container.Resolve<Signal>();
             var sent = new FooSignal();
 
             Assert.IsNull(received);
@@ -75,7 +75,7 @@ namespace Zenject.Tests.Signals
                 .ToMethod<Qux>(x => x.OnFoo).From(b => b.FromInstance(qux));
             Container.ResolveRoots();
 
-            var signalBus = Container.Resolve<SignalBus>();
+            var signalBus = Container.Resolve<Signal>();
 
             Assert.That(!qux.HasRecievedSignal);
             signalBus.Fire<FooSignal>();
@@ -92,7 +92,7 @@ namespace Zenject.Tests.Signals
                 .ToMethod<Gorp>(x => x.OnFoo).From(b => b.FromInstance(gorp));
             Container.ResolveRoots();
 
-            var signalBus = Container.Resolve<SignalBus>();
+            var signalBus = Container.Resolve<Signal>();
             var sent = new FooSignal();
 
             Assert.IsNull(gorp.ReceivedValue);
@@ -111,7 +111,7 @@ namespace Zenject.Tests.Signals
                 .ToMethod<Gorp>(x => x.OnFoo).From(b => b.FromInstance(gorp)).MoveIntoDirectSubContainers();
             Container.ResolveRoots();
 
-            var signalBus1 = Container.Resolve<SignalBus>();
+            var signalBus1 = Container.Resolve<Signal>();
             var sent = new FooSignal();
 
             Assert.IsNull(gorp.ReceivedValue);
@@ -121,7 +121,7 @@ namespace Zenject.Tests.Signals
             var subContainer = Container.CreateSubContainer();
             subContainer.ResolveRoots();
 
-            var signalBus2 = Container.Resolve<SignalBus>();
+            var signalBus2 = Container.Resolve<Signal>();
 
             Assert.IsNull(gorp.ReceivedValue);
             signalBus2.Fire(sent);

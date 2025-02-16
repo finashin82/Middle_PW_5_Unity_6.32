@@ -20,7 +20,7 @@ namespace Zenject.Tests.Signals
         {
             Container.DeclareSignal<FooSignal>();
 
-            var signalBus = Container.Resolve<SignalBus>();
+            var signalBus = Container.Resolve<Signal>();
 
             int count = 1;
 
@@ -49,7 +49,7 @@ namespace Zenject.Tests.Signals
         {
             Container.DeclareSignal<FooSignal>();
 
-            var signalBus = Container.Resolve<SignalBus>();
+            var signalBus = Container.Resolve<Signal>();
 
             bool received = false;
 
@@ -118,11 +118,11 @@ namespace Zenject.Tests.Signals
         {
             Container.DeclareSignal<FooSignal>();
 
-            var signalBus1 = Container.Resolve<SignalBus>();
+            var signalBus1 = Container.Resolve<Signal>();
 
             var subContainer = Container.CreateSubContainer();
 
-            var signalBus2 = subContainer.Resolve<SignalBus>();
+            var signalBus2 = subContainer.Resolve<Signal>();
 
             bool received = false;
             Action callback = () => received = true;
@@ -146,7 +146,7 @@ namespace Zenject.Tests.Signals
         {
             Container.DeclareSignal<FooSignal>();
 
-            var signalBus = Container.Resolve<SignalBus>();
+            var signalBus = Container.Resolve<Signal>();
 
             signalBus.Fire<FooSignal>();
         }
@@ -156,7 +156,7 @@ namespace Zenject.Tests.Signals
         {
             Container.DeclareSignal<FooSignal>().RequireSubscriber();
 
-            var signalBus = Container.Resolve<SignalBus>();
+            var signalBus = Container.Resolve<Signal>();
 
             Assert.Throws(() => signalBus.Fire<FooSignal>());
         }
@@ -168,7 +168,7 @@ namespace Zenject.Tests.Signals
             Container.ResolveRoots();
             Container.Resolve<InitializableManager>().Initialize();
 
-            var signalBus = Container.Resolve<SignalBus>();
+            var signalBus = Container.Resolve<Signal>();
 
             bool received = false;
             signalBus.Subscribe<FooSignal>(() => received = true);
@@ -187,7 +187,7 @@ namespace Zenject.Tests.Signals
             Container.DeclareSignal<FooSignal>();
             Container.ResolveRoots();
 
-            var signalBus = Container.Resolve<SignalBus>();
+            var signalBus = Container.Resolve<Signal>();
             Assert.That(signalBus.IsSignalDeclared<FooSignal>());
         }
 
@@ -196,7 +196,7 @@ namespace Zenject.Tests.Signals
         {
             Container.ResolveRoots();
 
-            var signalBus = Container.Resolve<SignalBus>();
+            var signalBus = Container.Resolve<Signal>();
             Assert.That(!signalBus.IsSignalDeclared<FooSignal>());
         }
 
@@ -207,7 +207,7 @@ namespace Zenject.Tests.Signals
             Container.ResolveRoots();
             Container.Resolve<InitializableManager>().Initialize();
 
-            var signalBus = Container.Resolve<SignalBus>();
+            var signalBus = Container.Resolve<Signal>();
 
             int callCount = 0;
 

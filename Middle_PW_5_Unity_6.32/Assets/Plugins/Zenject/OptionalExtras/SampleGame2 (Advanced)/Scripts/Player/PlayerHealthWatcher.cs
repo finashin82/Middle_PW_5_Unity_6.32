@@ -5,7 +5,7 @@ namespace Zenject.SpaceFighter
 {
     public class PlayerHealthWatcher : ITickable
     {
-        readonly SignalBus _signalBus;
+        readonly Signal _signalBus;
         readonly AudioPlayer _audioPlayer;
         readonly Settings _settings;
         readonly Explosion.Factory _explosionFactory;
@@ -16,7 +16,7 @@ namespace Zenject.SpaceFighter
             Explosion.Factory explosionFactory,
             Settings settings,
             AudioPlayer audioPlayer,
-            SignalBus signalBus)
+            Signal signalBus)
         {
             _signalBus = signalBus;
             _audioPlayer = audioPlayer;

@@ -32,11 +32,11 @@ namespace Zenject.Asteroids
         float _restartTextFadeInTime;
 
         float _gameOverElapsed;
-        SignalBus _signalBus;
+        Signal _signalBus;
 
         [Inject]
         public void Construct(
-            GameController gameController, SignalBus signalBus)
+            GameController gameController, Signal signalBus)
         {
             _gameController = gameController;
             _signalBus = signalBus;

@@ -6,7 +6,7 @@ namespace Zenject.SpaceFighter
 {
     public class GameRestartHandler : IInitializable, IDisposable, ITickable
     {
-        readonly SignalBus _signalBus;
+        readonly Signal _signalBus;
         readonly Settings _settings;
 
         bool _isDelaying;
@@ -14,7 +14,7 @@ namespace Zenject.SpaceFighter
 
         public GameRestartHandler(
             Settings settings,
-            SignalBus signalBus)
+            Signal signalBus)
         {
             _signalBus = signalBus;
             _settings = settings;

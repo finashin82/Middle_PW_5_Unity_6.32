@@ -8,7 +8,7 @@ namespace Zenject.SpaceFighter
     public class EnemySpawner : ITickable, IInitializable
     {
         readonly EnemyFacade.Factory _enemyFactory;
-        readonly SignalBus _signalBus;
+        readonly Signal _signalBus;
         readonly LevelBoundary _levelBoundary;
         readonly Settings _settings;
 
@@ -19,7 +19,7 @@ namespace Zenject.SpaceFighter
         public EnemySpawner(
             Settings settings,
             LevelBoundary levelBoundary,
-            SignalBus signalBus,
+            Signal signalBus,
             EnemyFacade.Factory enemyFactory)
         {
             _enemyFactory = enemyFactory;

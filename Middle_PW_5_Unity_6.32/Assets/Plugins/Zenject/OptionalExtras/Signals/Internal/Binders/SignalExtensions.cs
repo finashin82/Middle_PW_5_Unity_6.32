@@ -18,7 +18,7 @@ namespace Zenject
             var signalBindInfo = CreateDefaultSignalDeclarationBindInfo(container, type);
 
             var bindInfo = container.Bind<SignalDeclaration>().AsCached()
-                .WithArguments(signalBindInfo).WhenInjectedInto(typeof(SignalBus), typeof(SignalDeclarationAsyncInitializer)).BindInfo;
+                .WithArguments(signalBindInfo).WhenInjectedInto(typeof(Signal), typeof(SignalDeclarationAsyncInitializer)).BindInfo;
 
             var signalBinder = new DeclareSignalIdRequireHandlerAsyncTickPriorityCopyBinder(signalBindInfo);
             signalBinder.AddCopyBindInfo(bindInfo);

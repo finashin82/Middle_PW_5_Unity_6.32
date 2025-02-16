@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d0c4b7b346198804db2e9332bb8fc465, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: d0c4b7b346198804db2e9332bb8fc465, type: 3}
       propertyPath: m_Controller
       value: 
@@ -87,6 +91,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0c4b7b346198804db2e9332bb8fc465, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2671125261791000609}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: d0c4b7b346198804db2e9332bb8fc465, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -3616606534611745477}
   m_SourcePrefab: {fileID: 100100000, guid: d0c4b7b346198804db2e9332bb8fc465, type: 3}
 --- !u!1 &5821999419485813547 stripped
 GameObject:
@@ -145,7 +152,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _player: {fileID: 0}
   _radius: 5
   timeToIdle: 3
 --- !u!114 &4080556927889314780
@@ -184,7 +190,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _player: {fileID: 0}
   _radius: 3
 --- !u!114 &5964176680521382881
 MonoBehaviour:
@@ -222,7 +227,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _player: {fileID: 0}
   _radius: 2
 --- !u!65 &6112446506776344579
 BoxCollider:
@@ -316,5 +320,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75022ec93416ad64881cbde9af92a1ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-3616606534611745477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5821999419485813547}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b90c468c974eb34ba56cab3f949f2a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

@@ -8,21 +8,21 @@ using UniRx;
 
 namespace Zenject
 {
-    public class SignalBus : ILateDisposable
+    public class Signal : ILateDisposable
     {
         readonly SignalSubscription.Pool _subscriptionPool;
         readonly Dictionary<BindingId, SignalDeclaration> _localDeclarationMap = new Dictionary<BindingId, SignalDeclaration>();
-        readonly SignalBus _parentBus;
+        readonly Signal _parentBus;
         readonly Dictionary<SignalSubscriptionId, SignalSubscription> _subscriptionMap = new Dictionary<SignalSubscriptionId, SignalSubscription>();
         readonly ZenjectSettings.SignalSettings _settings;
         readonly SignalDeclaration.Factory _signalDeclarationFactory;
         readonly DiContainer _container;
 
-        public SignalBus(
+        public Signal(
             [Inject(Source = InjectSources.Local)]
             List<SignalDeclaration> signalDeclarations,
             [Inject(Source = InjectSources.Parent, Optional = true)]
-            SignalBus parentBus,
+            Signal parentBus,
             [InjectOptional]
             ZenjectSettings zenjectSettings,
             SignalSubscription.Pool subscriptionPool,
@@ -46,7 +46,7 @@ namespace Zenject
             _parentBus = parentBus;
         }
 
-        public SignalBus ParentBus
+        public Signal ParentBus
         {
             get { return _parentBus; }
         }

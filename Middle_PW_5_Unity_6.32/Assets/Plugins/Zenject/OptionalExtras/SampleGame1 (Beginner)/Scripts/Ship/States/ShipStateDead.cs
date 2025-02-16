@@ -6,7 +6,7 @@ namespace Zenject.Asteroids
 {
     public class ShipStateDead : ShipState
     {
-        readonly SignalBus _signalBus;
+        readonly Signal _signalBus;
         readonly BrokenShipFactory _brokenShipFactory;
         readonly ExplosionFactory _explosionFactory;
         readonly Settings _settings;
@@ -19,7 +19,7 @@ namespace Zenject.Asteroids
             Settings settings, Ship ship,
             ExplosionFactory explosionFactory,
             BrokenShipFactory brokenShipFactory,
-            SignalBus signalBus)
+            Signal signalBus)
         {
             _signalBus = signalBus;
             _brokenShipFactory = brokenShipFactory;

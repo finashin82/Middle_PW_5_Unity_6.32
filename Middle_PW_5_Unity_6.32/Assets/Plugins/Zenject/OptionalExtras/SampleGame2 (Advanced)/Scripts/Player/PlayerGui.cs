@@ -40,7 +40,7 @@ namespace Zenject.SpaceFighter
         int _killCount;
 
         [Inject]
-        public void Construct(Player player, SignalBus signalBus)
+        public void Construct(Player player, Signal signalBus)
         {
             _player = player;
 
