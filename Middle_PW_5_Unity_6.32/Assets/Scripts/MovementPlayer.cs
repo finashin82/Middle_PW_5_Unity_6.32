@@ -21,6 +21,15 @@ public class MovementPlayer : InputData
     {
         Vector3 moveVector = new Vector3(-inputVector.x, 0, -inputVector.y);
 
+        if (isAttackBegin)
+        {
+            animator.SetBool("isAttack", true);
+        }
+        else
+        {
+            animator.SetBool("isAttack", false);
+        }
+
         if (inputVector != Vector2.zero)
         {
             // Перемещение
