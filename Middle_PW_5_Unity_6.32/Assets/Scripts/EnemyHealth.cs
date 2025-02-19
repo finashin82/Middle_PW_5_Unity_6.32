@@ -3,7 +3,15 @@ using Zenject;
 
 public class EnemyHealth : MonoBehaviour
 {
+    private EnemyPool enemyPool;
+
     [Inject] private EnemySettings _enemySettings;
+
+    [Inject]
+    public void Construct(EnemyPool enemyPool)
+    {
+        this.enemyPool = enemyPool;
+    }
 
     private float currentHealth;
 
@@ -11,16 +19,27 @@ public class EnemyHealth : MonoBehaviour
 
     void Start()
     {
-        Debug.Log($"Enemy Health: {_enemySettings.Health}");
+        currentHealth = _enemySettings.Health;
 
+        animator = GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        DeathEnemy();
+    }
+
+    public void NewHealth()
+    {
         currentHealth = _enemySettings.Health;
     }
 
-    public void TakeDamage(float damage)
+    public void TakeDamage(int damage)
     {
         if (currentHealth > 0)
         {
             currentHealth -= damage;
+            Debug.Log($"Enemy Health: {_enemySettings.Health}");
         }
     }
 
@@ -30,12 +49,13 @@ public class EnemyHealth : MonoBehaviour
         {
             animator.SetBool("isDead", true);
 
-            Invoke("DestroyEnemy", 3f);
+            Invoke("Die", 3f);
         }
     }
 
-    private void DestroyEnemy()
+    public void Die()
     {
-        Destroy(this.gameObject);
+        currentHealth = _enemySettings.Health;
+        enemyPool.ReturnEnemy(gameObject);
     }
 }

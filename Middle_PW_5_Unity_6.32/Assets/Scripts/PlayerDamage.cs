@@ -5,11 +5,13 @@ public class PlayerDamage : MonoBehaviour
 {
     [Inject] private PlayerSettings _playerSettings;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.TryGetComponent<EnemyHealth>(out var health))
+        if (other.gameObject.TryGetComponent<EnemyHealth>(out var health))
         {
             health.TakeDamage(_playerSettings.StrikeForce);
+            Debug.Log("+");
+
         }
     }
 }

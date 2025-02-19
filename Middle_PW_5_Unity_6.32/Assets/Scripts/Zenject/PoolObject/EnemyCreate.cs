@@ -11,11 +11,6 @@ public class EnemyCreate : MonoBehaviour
         this.enemyPool = enemyPool;
     }
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
