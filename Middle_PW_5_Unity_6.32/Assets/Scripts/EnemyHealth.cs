@@ -17,11 +17,17 @@ public class EnemyHealth : MonoBehaviour
 
     private Animator animator;
 
+    private Rigidbody rb;
+
     void Start()
     {
         currentHealth = _enemySettings.Health;
 
         animator = GetComponent<Animator>();
+
+        rb = GetComponent<Rigidbody>();
+
+        rb.isKinematic = false;
     }
 
     private void Update()
@@ -56,6 +62,7 @@ public class EnemyHealth : MonoBehaviour
     public void Die()
     {
         currentHealth = _enemySettings.Health;
+
         enemyPool.ReturnEnemy(gameObject);
     }
 }
