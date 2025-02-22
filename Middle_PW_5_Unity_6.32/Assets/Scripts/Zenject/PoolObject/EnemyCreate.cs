@@ -1,9 +1,15 @@
+using System.Net;
+using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using Zenject;
 
 public class EnemyCreate : MonoBehaviour
 {
     private EnemyPool enemyPool;
+
+    private GameObject[] trackingPoints;
+
+    private int randPoint;
 
     [Inject]
     public void Construct(EnemyPool enemyPool)
@@ -13,17 +19,20 @@ public class EnemyCreate : MonoBehaviour
 
     private Rigidbody rb;
 
-    void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnEnemy();
-        }
+        trackingPoints = GameObject.FindGameObjectsWithTag("TrackingPoint");
     }
 
-    void SpawnEnemy()
+    void Update()
     {
         GameObject enemy = enemyPool.GetEnemy();
-        enemy.transform.position = new Vector3(Random.Range(-5, 5), 0, Random.Range(-5, 5));
+
+        if (enemy != null)
+        {
+            randPoint = Random.Range(0, trackingPoints.Length);
+
+            enemy.transform.position = trackingPoints[randPoint].transform.position;
+        }
     }
 }

@@ -1,5 +1,6 @@
 using Unity.Cinemachine;
 using UnityEngine;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class MovementPlayer : InputData
 {
@@ -32,9 +33,8 @@ public class MovementPlayer : InputData
         cameraForward.Normalize();
         cameraRight.Normalize();
 
-        Vector3 moveVector = new Vector3(-inputVector.x, 0, -inputVector.y);
-
-        //Vector3 moveDirection = (cameraForward * inputVector.x + cameraRight * inputVector.x).normalized;
+        // Вычисляем направление движения относительно камеры
+        Vector3 moveDirection = (cameraForward * inputVector.y + cameraRight * inputVector.x).normalized;
 
         if (isAttackBegin)
         {
@@ -48,14 +48,21 @@ public class MovementPlayer : InputData
         if (inputVector != Vector2.zero)
         {
             // Перемещение
-            rb.MovePosition(rb.position + moveVector * speed * Time.deltaTime);
+            rb.MovePosition(rb.position + moveDirection * speed * Time.deltaTime);
 
             // Направление по ходу движения
-            direction = new Vector3(-inputVector.x, 0, -inputVector.y);
-
-            transform.LookAt(transform.position + direction);
-
+            transform.LookAt(transform.position + moveDirection);
             animator.SetBool("isWalk", true);
+
+            // Переход на бег
+            if (isSprint)
+            {
+                animator.SetBool("isRun", true);
+            }
+            else
+            {
+                animator.SetBool("isRun", false);
+            }
         }
         else
         {

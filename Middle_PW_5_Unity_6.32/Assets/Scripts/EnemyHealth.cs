@@ -54,8 +54,6 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth <= 0)
         {
             animator.SetBool("isDead", true);
-
-            Invoke("Die", 3f);
         }
     }
 

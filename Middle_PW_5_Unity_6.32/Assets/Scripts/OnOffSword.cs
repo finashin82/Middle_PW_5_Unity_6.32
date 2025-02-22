@@ -4,7 +4,12 @@ public class OnOffSword : MonoBehaviour
 {
     [SerializeField] private Collider colliderSword;
 
-   public void OnSword()
+    private void Start()
+    {
+        colliderSword.enabled = false;
+    }
+
+    public void OnSword()
     {
         colliderSword.enabled = true;
     }

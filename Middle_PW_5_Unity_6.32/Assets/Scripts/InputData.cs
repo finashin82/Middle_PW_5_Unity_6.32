@@ -9,20 +9,27 @@ public class InputData : MonoBehaviour
 
     public bool isAttackBegin = false;
 
+    public bool isSprint = false;
+
     private void Awake()
     {
         // Активируем контроллер ввода
         inputActions = new InputSystem_Actions();
 
         // Подписываемся на событие нажатия клавиш движения
-        inputActions.Player.Move.started += OnClickStarted;
-        inputActions.Player.Move.performed += OnClickPerformed;
-        inputActions.Player.Move.canceled += OnClickCanceled;
+        inputActions.Player.Move.started += OnMoveStarted;
+        inputActions.Player.Move.performed += OnMovePerformed;
+        inputActions.Player.Move.canceled += OnMoveCanceled;
 
         // Подписываемся на событие нажатия клавиш атаки
-        inputActions.Player.Attack.started += OnPressStarted;
-        inputActions.Player.Attack.performed += OnPressPerformed;
-        inputActions.Player.Attack.canceled += OnPressCanceled;
+        inputActions.Player.Attack.started += OnAttackStarted;
+        inputActions.Player.Attack.performed += OnAttackPerformed;
+        inputActions.Player.Attack.canceled += OnAttackCanceled;
+
+        // Подписываемся на событие нажатия клавиш ускорения
+        inputActions.Player.Sprint.started += OnSprintStarted;
+        inputActions.Player.Sprint.performed += OnSprintPerformed;
+        inputActions.Player.Sprint.canceled += OnSprintCanceled;
     }
 
     public void OnEnable()
@@ -35,33 +42,48 @@ public class InputData : MonoBehaviour
         inputActions.Disable();
     }    
 
-    public void OnClickStarted(InputAction.CallbackContext context)
+    public void OnMoveStarted(InputAction.CallbackContext context)
     {
 
     }     
 
-    public void OnClickPerformed(InputAction.CallbackContext context)
+    public void OnMovePerformed(InputAction.CallbackContext context)
     {
         inputVector = context.ReadValue<Vector2>();
     }
 
-    public void OnClickCanceled(InputAction.CallbackContext context)
+    public void OnMoveCanceled(InputAction.CallbackContext context)
     {
         inputVector = Vector2.zero;        
     }
 
-    public void OnPressStarted(InputAction.CallbackContext context)
+    public void OnAttackStarted(InputAction.CallbackContext context)
     {
         
     }
 
-    public void OnPressPerformed(InputAction.CallbackContext context)
+    public void OnAttackPerformed(InputAction.CallbackContext context)
     {
         isAttackBegin = true;
     }
 
-    public void OnPressCanceled(InputAction.CallbackContext context)
+    public void OnAttackCanceled(InputAction.CallbackContext context)
     {
         isAttackBegin = false;
+    }
+
+    public void OnSprintStarted(InputAction.CallbackContext context)
+    {
+
+    }
+
+    public void OnSprintPerformed(InputAction.CallbackContext context)
+    {
+        isSprint = true;
+    }
+
+    public void OnSprintCanceled(InputAction.CallbackContext context)
+    {
+        isSprint = false;
     }
 }
