@@ -3,8 +3,9 @@ using Zenject;
 
 public class PlayerDamage : MonoBehaviour
 {
-    [Inject] private PlayerSettings _playerSettings;
+    private PlayerSettings _playerSettings;
 
+    [Inject]
     public void Construct(PlayerSettings playerSettings)
     {
         _playerSettings = playerSettings;
