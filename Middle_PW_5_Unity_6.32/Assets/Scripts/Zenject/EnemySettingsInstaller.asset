@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyStrikeForce: 1
   _enemySpeed: 2
-  _enemyHealth: 10
+  _enemyHealth: 20
