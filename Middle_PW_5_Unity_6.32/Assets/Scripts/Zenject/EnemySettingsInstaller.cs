@@ -13,7 +13,7 @@ public class EnemySettingsInstaller : ScriptableObjectInstaller<EnemySettingsIns
     }
 }
 
-public class EnemySettings
+public class EnemySettings2
 {
     public int StrikeForce;
 
@@ -21,7 +21,7 @@ public class EnemySettings
 
     public int Health;
 
-    public EnemySettings(int strikeForce, float speed, int health)
+    public EnemySettings2(int strikeForce, float speed, int health)
     {
         StrikeForce = strikeForce;
         Speed = speed;

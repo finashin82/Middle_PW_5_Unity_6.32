@@ -6,7 +6,7 @@ namespace Zenject.SpaceFighter
     public class EnemyDeathHandler
     {
         readonly EnemyFacade _facade;
-        readonly Signal _signalBus;
+        readonly SignalBus _signalBus;
         readonly Settings _settings;
         readonly Explosion.Factory _explosionFactory;
         readonly AudioPlayer _audioPlayer;
@@ -17,7 +17,7 @@ namespace Zenject.SpaceFighter
             AudioPlayer audioPlayer,
             Explosion.Factory explosionFactory,
             Settings settings,
-            Signal signalBus,
+            SignalBus signalBus,
             EnemyFacade facade)
         {
             _facade = facade;

@@ -13,7 +13,7 @@ namespace Zenject.Asteroids
 
     public class GameController : IInitializable, ITickable, IDisposable
     {
-        readonly Signal _signalBus;
+        readonly SignalBus _signalBus;
         readonly Ship _ship;
         readonly AsteroidManager _asteroidSpawner;
 
@@ -22,7 +22,7 @@ namespace Zenject.Asteroids
 
         public GameController(
             Ship ship, AsteroidManager asteroidSpawner,
-            Signal signalBus)
+            SignalBus signalBus)
         {
             _signalBus = signalBus;
             _asteroidSpawner = asteroidSpawner;

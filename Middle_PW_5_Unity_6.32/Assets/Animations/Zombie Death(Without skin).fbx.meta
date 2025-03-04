@@ -58,7 +58,7 @@ ModelImporter:
       - time: 0.9854861
         functionName: Die
         data: 
-        objectReferenceParameter: {fileID: 11500000, guid: 8b90c468c974eb34ba56cab3f949f2a7, type: 3}
+        objectReferenceParameter: {fileID: 11500000, guid: 1375da04445ecb74ca39bab1f8f3d341, type: 3}
         floatParameter: 0
         intParameter: 0
         messageOptions: 0

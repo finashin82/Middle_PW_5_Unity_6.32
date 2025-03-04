@@ -5,14 +5,14 @@ namespace Zenject.Asteroids
 {
     public class AudioHandler : IInitializable, IDisposable
     {
-        readonly Signal _signalBus;
+        readonly SignalBus _signalBus;
         readonly Settings _settings;
         readonly AudioSource _audioSource;
 
         public AudioHandler(
             AudioSource audioSource,
             Settings settings,
-            Signal signalBus)
+            SignalBus signalBus)
         {
             _signalBus = signalBus;
             _settings = settings;

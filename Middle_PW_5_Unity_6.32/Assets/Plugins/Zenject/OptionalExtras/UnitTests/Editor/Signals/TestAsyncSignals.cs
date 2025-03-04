@@ -9,7 +9,7 @@ namespace Zenject.Tests.Signals
         static int CallCount;
 
         [Inject]
-        Signal _signalBus = null;
+        SignalBus _signalBus = null;
 
         [Inject]
         Receiver1 _receiver1 = null;

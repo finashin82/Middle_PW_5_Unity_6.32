@@ -3,41 +3,26 @@ using Zenject;
 
 public class EnemyHealth : MonoBehaviour
 {
-    private EnemyPool enemyPool;
+    private EnemySettings _enemySettings;
 
-    [Inject] private EnemySettings _enemySettings;
+    private SignalBus _signalBus;
 
     [Inject]
-    public void Construct(EnemyPool enemyPool)
+    public void Construct(EnemySettings enemySettings, SignalBus signalBus)
     {
-        this.enemyPool = enemyPool;
+        _enemySettings = enemySettings;
+        _signalBus = signalBus;
     }
 
     private float currentHealth;
 
-    private Animator animator;
-
-    private Rigidbody rb;
+    private int targetId;
 
     void Start()
     {
         currentHealth = _enemySettings.Health;
 
-        animator = GetComponent<Animator>();
-
-        rb = GetComponent<Rigidbody>();
-
-        rb.isKinematic = false;
-    }
-
-    private void Update()
-    {
-        DeathEnemy();
-    }
-
-    public void NewHealth()
-    {
-        currentHealth = _enemySettings.Health;
+        targetId = this.gameObject.GetInstanceID();
     }
 
     public void TakeDamage(int damage)
@@ -45,22 +30,13 @@ public class EnemyHealth : MonoBehaviour
         if (currentHealth > 0)
         {
             currentHealth -= damage;
-            Debug.Log($"Enemy Health: {_enemySettings.Health}");
         }
-    }
-
-    private void DeathEnemy()
-    {
-        if (currentHealth <= 0)
+        else
         {
-            animator.SetBool("isDead", true);
+            _signalBus.Fire(new DeathSignal
+            {
+                TargetId = targetId
+            });
         }
-    }
-
-    public void Die()
-    {
-        currentHealth = _enemySettings.Health;
-
-        enemyPool.ReturnEnemy(gameObject);
     }
 }

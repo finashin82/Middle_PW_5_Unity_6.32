@@ -8,7 +8,7 @@ namespace Zenject
     public class SignalCallbackWithLookupWrapper : IDisposable
     {
         readonly DiContainer _container;
-        readonly Signal _signalBus;
+        readonly SignalBus _signalBus;
         readonly Guid _lookupId;
         readonly Func<object, Action<object>> _methodGetter;
         readonly Type _objectType;
@@ -20,7 +20,7 @@ namespace Zenject
             Type objectType,
             Guid lookupId,
             Func<object, Action<object>> methodGetter,
-            Signal signalBus,
+            SignalBus signalBus,
             DiContainer container)
         {
             _objectType = objectType;
