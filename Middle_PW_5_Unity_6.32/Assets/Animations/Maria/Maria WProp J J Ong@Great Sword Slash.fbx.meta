@@ -69,6 +69,20 @@ ModelImporter:
         floatParameter: 0
         intParameter: 0
         messageOptions: 0
+      - time: 0.4769724
+        functionName: OnHitFlash
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 7c07a24943f0ad1468110e9ebe6bec24, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.57949543
+        functionName: OffHitFlash
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 7c07a24943f0ad1468110e9ebe6bec24, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
