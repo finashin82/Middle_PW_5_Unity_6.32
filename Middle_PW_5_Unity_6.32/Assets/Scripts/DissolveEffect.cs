@@ -5,24 +5,34 @@ public class DissolveEffect : MonoBehaviour
 {
     [SerializeField] private Renderer _meshRenderer;
 
-    //[SerializeField] private Material _material;
+    [SerializeField] private float speedDissolve = 0.3f;
 
-    //[SerializeField] private GameObject _material;
-
-    private float speed = 0.3f;
-
-    private const string AmountKey = "_DissolveAmount";
+    private const string DissolveAmount = "_DissolveAmount";
 
     private float counter = 0;
 
-    void Start()
-    {
-        
-    }
+    private bool isDissolve = false;
 
     void FixedUpdate()
     {
-        counter += speed * Time.deltaTime;
-        _meshRenderer.material.SetFloat(AmountKey, counter);
+        if (isDissolve)
+        {
+            if (counter > 1) counter = 1;
+
+            counter += speedDissolve * Time.deltaTime;
+            _meshRenderer.material.SetFloat(DissolveAmount, counter);
+        }
+        else
+        {
+            if (counter < 0) counter = 0;
+
+            counter -= speedDissolve * Time.deltaTime;
+            _meshRenderer.material.SetFloat(DissolveAmount, counter);
+        }
+    }
+
+    public void OnOffDissolve()
+    {
+        isDissolve = !isDissolve;
     }
 }
