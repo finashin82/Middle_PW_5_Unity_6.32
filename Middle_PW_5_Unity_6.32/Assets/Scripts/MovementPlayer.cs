@@ -36,6 +36,9 @@ public class MovementPlayer : InputData
         // Вычисляем направление движения относительно камеры
         Vector3 moveDirection = (cameraForward * inputVector.y + cameraRight * inputVector.x).normalized;
 
+        // Направление по ходу движения
+        transform.LookAt(transform.position + moveDirection);
+
         if (isAttackBegin)
         {
             animator.SetBool("isAttack", true);
@@ -51,7 +54,7 @@ public class MovementPlayer : InputData
             rb.MovePosition(rb.position + moveDirection * speed * Time.deltaTime);
 
             // Направление по ходу движения
-            transform.LookAt(transform.position + moveDirection);
+            //transform.LookAt(transform.position + moveDirection);
             animator.SetBool("isWalk", true);
 
             // Переход на бег
