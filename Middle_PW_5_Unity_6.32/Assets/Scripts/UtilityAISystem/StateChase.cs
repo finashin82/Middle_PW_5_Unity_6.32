@@ -29,10 +29,6 @@ public class StateChase : State
 
         animator.SetBool("isRun", true);
                 
-        //Vector3 direction = _player.transform.position - transform.position;
-
-        //direction.Normalize();
-
         Vector3 newPosition = new Vector3(_player.transform.position.x, transform.position.y, _player.transform.position.z);
 
         transform.LookAt(newPosition);

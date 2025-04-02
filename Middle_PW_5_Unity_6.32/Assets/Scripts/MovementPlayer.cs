@@ -10,8 +10,6 @@ public class MovementPlayer : InputData
 
     private Rigidbody rb;
 
-    private Vector3 direction; 
-
     private Animator animator;
 
     void Start()
@@ -33,6 +31,10 @@ public class MovementPlayer : InputData
         cameraForward.Normalize();
         cameraRight.Normalize();
 
+        // Поворачиваем объект по направлению камеры, чтобы он постоянно смотрел вперед
+        Vector3 dir = new Vector3(cameraForward.x, 0, cameraForward.z);
+        transform.rotation = Quaternion.LookRotation(dir);
+
         // Вычисляем направление движения относительно камеры
         Vector3 moveDirection = (cameraForward * inputVector.y + cameraRight * inputVector.x).normalized;
 
@@ -50,11 +52,9 @@ public class MovementPlayer : InputData
 
         if (inputVector != Vector2.zero)
         {
-            // Перемещение
+            // Перемещение персонажа в направлении камеры
             rb.MovePosition(rb.position + moveDirection * speed * Time.deltaTime);
-
-            // Направление по ходу движения
-            //transform.LookAt(transform.position + moveDirection);
+            
             animator.SetBool("isWalk", true);
 
             // Переход на бег

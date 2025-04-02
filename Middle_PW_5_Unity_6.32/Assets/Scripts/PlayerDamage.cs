@@ -16,6 +16,7 @@ public class PlayerDamage : MonoBehaviour
         if (other.gameObject.TryGetComponent<EnemyHealth>(out var health))
         {
             health.TakeDamage(_playerSettings.StrikeForce);
+            
         }
     }
 }

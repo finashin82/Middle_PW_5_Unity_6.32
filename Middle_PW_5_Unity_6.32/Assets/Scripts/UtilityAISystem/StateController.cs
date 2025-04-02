@@ -13,8 +13,6 @@ public class StateController : MonoBehaviour
     {        
         float maxRadius = 0;
 
-        //State stateCurrent = null;
-
         foreach (var state in _state) 
         {
             var radius = state.Evaluate();

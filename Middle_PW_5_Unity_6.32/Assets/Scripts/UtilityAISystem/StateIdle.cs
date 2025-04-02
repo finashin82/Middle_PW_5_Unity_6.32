@@ -54,7 +54,7 @@ public class StateIdle : State
 
         animator.SetBool("isWalk", false);
     }
-
+    
     public override void Execute()
     {
         Debug.Log("Патрулирование");
@@ -104,11 +104,7 @@ public class StateIdle : State
             animator.SetBool("isWalk", true);
         }
     }
-
-    /// <summary>
-    /// Расчитываем дистанцию для смены состояния с помощью кривых (в данном случае, у какого состояния больше радиус, то состояние и включается)
-    /// </summary>
-    /// <returns></returns>
+    
     public override float Evaluate()
     {
         var distFloat = Vector3.Distance(this.transform.position, _player.transform.position);

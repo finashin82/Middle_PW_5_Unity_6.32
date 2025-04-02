@@ -1,17 +1,41 @@
 using UnityEngine;
 using Zenject;
+using static Zenject.SpaceFighter.GameSettingsInstaller;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [Inject] private PlayerSettings _playerSettings;
+    private PlayerSettings _playerSettings;
+
+    private SignalBus _signalBus;
+
+    [Inject]
+    public void Construct(PlayerSettings playerSettings, SignalBus signalBus)
+    {
+        _playerSettings = playerSettings;
+        _signalBus = signalBus;
+    }
+
+    private float currentHealth;
 
     void Start()
     {
-        Debug.Log($"Player Health: {_playerSettings.Health}");
+        currentHealth = _playerSettings.Health;
     }
 
-    void Update()
+    public void TakeDamage(int damage)
     {
-        
+        if (currentHealth > 0)
+        {
+            currentHealth -= damage;
+            Debug.Log($"Health Player: {currentHealth}");
+
+        }
+        else
+        {
+            _signalBus.Fire(new DeathPlayerSignal
+            {
+
+            });
+        }
     }
 }
