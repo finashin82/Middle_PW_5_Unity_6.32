@@ -20,13 +20,22 @@ public class MineScale : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Player"))
-        mine.transform.DOScale(endScalePosition, speedScale);
+        if (other.gameObject.TryGetComponent(out ITakeDamagePlayer health))
+        {
+            MineScaleDOTween(endScalePosition);
+        }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.CompareTag("Player"))
-        mine.transform.DOScale(startScalePosition, speedScale);
+        if (other.gameObject.TryGetComponent(out ITakeDamagePlayer health))
+        {
+            MineScaleDOTween(startScalePosition);
+        }
+    }
+
+    private void MineScaleDOTween(Vector3 scalePosition)
+    {
+        mine.transform.DOScale(scalePosition, speedScale);
     }
 }

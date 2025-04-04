@@ -8,8 +8,8 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-        Debug.Log($"Player Strike Force: {_playerSettings.StrikeForce}");
-        Debug.Log($"Player Speed: {_playerSettings.Speed}");
+        //Debug.Log($"Player Strike Force: {_playerSettings.StrikeForce}");
+        //Debug.Log($"Player Speed: {_playerSettings.Speed}");
     }
 
     void Update()

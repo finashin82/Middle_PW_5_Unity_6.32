@@ -11597,6 +11597,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dab9015e59daa547a93040a98c4fae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &206468394
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 206468374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c875b56586c3fb43806bd3f78ab1388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputVector: {x: 0, y: 0}
+  isAttackBegin: 0
+  isSprint: 0
+  speed: 1.5
+  freeLookCamera: {fileID: 825942313}
 --- !u!1001 &208029336
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52323,6 +52340,7 @@ GameObject:
   - component: {fileID: 825942316}
   - component: {fileID: 825942315}
   - component: {fileID: 825942314}
+  - component: {fileID: 825942319}
   m_Layer: 0
   m_Name: CameraMaria
   m_TagString: Untagged
@@ -52554,6 +52572,36 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &825942319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 825942312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca7de3aefa901374ba29464584a3109a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CameraRadius: 0.4
+  Decollision:
+    Enabled: 1
+    ObstacleLayers:
+      serializedVersion: 2
+      m_Bits: 1
+    UseFollowTarget:
+      Enabled: 1
+      YOffset: 0
+    Damping: 0.5
+    SmoothingTime: 0
+  TerrainResolution:
+    Enabled: 1
+    TerrainLayers:
+      serializedVersion: 2
+      m_Bits: 1
+    MaximumRaycast: 10
+    Damping: 0.5
 --- !u!1001 &828792836
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54423,6 +54471,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5621702947072186494, guid: cbae077a514bba24eb6cf5673cb2fd92, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5621702947072186494, guid: cbae077a514bba24eb6cf5673cb2fd92, type: 3}
       propertyPath: freeLookCamera
       value: 
       objectReference: {fileID: 825942313}
@@ -54434,6 +54486,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8364268750208169333, guid: cbae077a514bba24eb6cf5673cb2fd92, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 142cfbd6a9dd2b348a68f0daaa4db72a, type: 2}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 5426909043562229829, guid: cbae077a514bba24eb6cf5673cb2fd92, type: 3}
@@ -54450,6 +54506,9 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 482673500}
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3006194965727638965, guid: cbae077a514bba24eb6cf5673cb2fd92, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 206468394}
     - targetCorrespondingSourceObject: {fileID: 3006194965727638965, guid: cbae077a514bba24eb6cf5673cb2fd92, type: 3}
       insertIndex: -1
       addedObject: {fileID: 206468384}
@@ -91083,7 +91142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0fb8834464f15e4da4213ab93378c0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 30
+  damage: 100
 --- !u!135 &1512300882
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -112000,7 +112059,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 124217644}
   - {fileID: 403403543}
-  - {fileID: 825942318}
   - {fileID: 275789597}
   - {fileID: 1308435645}
   - {fileID: 1878219717}
@@ -112008,6 +112066,7 @@ SceneRoots:
   - {fileID: 314307513}
   - {fileID: 1881633672}
   - {fileID: 4412240}
+  - {fileID: 825942318}
   - {fileID: 893012685}
   - {fileID: 428633421}
   - {fileID: 741453207}

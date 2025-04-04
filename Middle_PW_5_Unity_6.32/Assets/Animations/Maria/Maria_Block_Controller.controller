@@ -157,7 +157,7 @@ AnimatorStateMachine:
     m_Position: {x: 350, y: 280, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -5102261838561998307}
-    m_Position: {x: 880, y: 260, z: 0}
+    m_Position: {x: 870, y: 310, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -278,7 +278,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Maria WProp J J Ong@T-Pose
+  m_Name: Maria_Block_Controller
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isWalk

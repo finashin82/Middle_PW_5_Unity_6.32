@@ -54,7 +54,9 @@ public class InputData : MonoBehaviour
 
     public void OnMoveCanceled(InputAction.CallbackContext context)
     {
-        inputVector = Vector2.zero;        
+        inputVector = Vector2.zero;
+        //inputVector.x = 0;
+        //inputVector.y = 0;
     }
 
     public void OnAttackStarted(InputAction.CallbackContext context)

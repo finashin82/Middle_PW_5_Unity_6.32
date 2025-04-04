@@ -7,8 +7,8 @@ public class EnemyAttack : MonoBehaviour
 
     void Start()
     {
-        Debug.Log($"Enemy Strike Force: {_enemySettings.StrikeForce}");
-        Debug.Log($"Enemy Speed: {_enemySettings.Speed}");        
+        //Debug.Log($"Enemy Strike Force: {_enemySettings.StrikeForce}");
+        //Debug.Log($"Enemy Speed: {_enemySettings.Speed}");        
     }
 
     void Update()

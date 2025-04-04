@@ -9,9 +9,9 @@ public class MineDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent<PlayerHealth>(out var health))
+        if (other.gameObject.TryGetComponent(out ITakeDamagePlayer health))
         {
-            health.TakeDamage(damage);
+            health.TakeDamagePlayer(damage);
         }
     }
 }
