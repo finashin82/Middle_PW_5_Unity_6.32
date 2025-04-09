@@ -38,7 +38,8 @@ public class MovementPlayerBlendTree : InputData
     private void FixedUpdate()
     {
         // ѕеремещение персонажа в направлении камеры
-        rb.MovePosition(rb.position + moveDirection * speed * Time.deltaTime);
+        //rb.MovePosition(rb.position + moveDirection * speed * Time.deltaTime);
+        rb.position = (rb.position + moveDirection * speed * Time.deltaTime);
     }
 
     /// <summary>

@@ -21,6 +21,9 @@ public class EnemyPool : MonoBehaviour
         InitializePool();
     }
 
+    /// <summary>
+    /// Создаем пулл из префаба
+    /// </summary>
     private void InitializePool()
     {
         for (int i = 0; i < poolSize; i++)
@@ -33,6 +36,10 @@ public class EnemyPool : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Добавляем объект из пула если он не пустой
+    /// </summary>
+    /// <returns></returns>
     public GameObject GetEnemy() 
     {
         foreach (GameObject enemy in enemyPool) 
@@ -48,11 +55,16 @@ public class EnemyPool : MonoBehaviour
         return null;
 
         // Если все объекты в пуле заняты, создаем новый (не обязательно)
+
         //GameObject newEnemy = container.InstantiatePrefab(_enemyPrefab);
         //enemyPool.Add(newEnemy);
         //return newEnemy;
     }
 
+    /// <summary>
+    /// Возврат в пулл
+    /// </summary>
+    /// <param name="enemy"></param>
     public void ReturnEnemy(GameObject enemy)
     {
         enemy.SetActive(false);
