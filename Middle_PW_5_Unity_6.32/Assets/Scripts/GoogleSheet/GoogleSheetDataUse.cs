@@ -6,12 +6,6 @@ using ColorUtility = UnityEngine.ColorUtility;
 
 public class GoogleSheetDataUse : MonoBehaviour
 {
-    //[SerializeField] private Image image;
-
-    //[SerializeField] private Text text;
-
-    //private Color color;
-
     public static string filePathCsv = "Assets/CSVSettings";
 
     public static string fileNameCsv = "GameSettingsCSV.csv";
@@ -35,7 +29,7 @@ public class GoogleSheetDataUse : MonoBehaviour
         // Выводим в консоль данные
         foreach (var item in items)
         {
-            Debug.Log($"{item.Name}: {item.Value}");
+            //Debug.Log($"{item.Name}: {item.Value}");
         }
     }
 }

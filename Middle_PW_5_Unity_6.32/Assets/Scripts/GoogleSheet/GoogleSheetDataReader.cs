@@ -36,7 +36,7 @@ public static class GoogleSheetDataReader
                 var name = values[0];
                 var value = values[1];
 
-                itemDatas.Add(new GoogleSheetData { Name = name, Value = value });
+                //itemDatas.Add(new GoogleSheetData { Name = name, Value = value });
             }
         }
 
