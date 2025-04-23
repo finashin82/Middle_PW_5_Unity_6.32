@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class PlatformRotate : MonoBehaviour
 {
-    [SerializeField] private float speedRotation = 2f;
+    [SerializeField] private float _speedRotation = 2f;
 
-    [SerializeField] private Transform targetRotation;
+    [SerializeField] private Transform _targetRotation;
 
-    [SerializeField] private GameObject[] players;
+    [SerializeField] private GameObject[] _players;
+
+    [SerializeField] private ChoicePlayerAnimation _playerAnimation;
 
     private float minDistance = float.MaxValue;
 
@@ -31,7 +33,7 @@ public class PlatformRotate : MonoBehaviour
 
     private void Update()
     {
-        distance = Vector3.Distance(players[indexStartSelect].transform.position, targetRotation.position);
+        distance = Vector3.Distance(_players[indexStartSelect].transform.position, _targetRotation.position);
 
         if (distance <= minDistance)
         {
@@ -41,20 +43,22 @@ public class PlatformRotate : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (Vector3.Distance(players[indexStartSelect].transform.position, targetRotation.position) <= minDistance)
+        if (Vector3.Distance(_players[indexStartSelect].transform.position, _targetRotation.position) <= minDistance)
         {
             Rotation(direction);
+
+            _playerAnimation.ChoicePlayerOn();
         }
     }
 
     private void Rotation(int direction)
     {
-        transform.Rotate(new Vector3(0, direction * speedRotation * Time.deltaTime, 0));
+        transform.Rotate(new Vector3(0, direction * _speedRotation * Time.deltaTime, 0));
     }
 
     public void RotationRigth()
     {
-        if (indexStartSelect < players.Length && indexStartSelect + 1 != players.Length)
+        if (indexStartSelect < _players.Length && indexStartSelect + 1 != _players.Length)
         {
             minDistance = float.MaxValue;
 
@@ -64,7 +68,7 @@ public class PlatformRotate : MonoBehaviour
         }
         else
         {
-            indexStartSelect = players.Length - 1;
+            indexStartSelect = _players.Length - 1;
         }
     }
 
