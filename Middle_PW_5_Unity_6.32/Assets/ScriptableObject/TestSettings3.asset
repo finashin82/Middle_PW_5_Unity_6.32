@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7d1b200f8e171a44c87a838ed6065be7, type: 3}
-  m_Name: Settings1
+  m_Name: TestSettings3
   m_EditorClassIdentifier: 
-  playerHealth: 50
-  playerDamage: 10
-  playerSpeed: 3
-  playerStrikeForce: 10
-  enemyHealth: 20
-  enemyDamage: 10
+  playerHealth: 100
+  playerDamage: 50
+  playerSpeed: 5
+  playerStrikeForce: 100
+  enemyHealth: 10
+  enemyDamage: 0
   enemySpeed: 2
-  enemyStrikeForce: 5
+  enemyStrikeForce: 0

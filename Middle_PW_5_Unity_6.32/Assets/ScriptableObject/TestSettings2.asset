@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39d251bdb0188314abc718db91f764ad, type: 3}
-  m_Name: Settings2
+  m_Script: {fileID: 11500000, guid: 7d1b200f8e171a44c87a838ed6065be7, type: 3}
+  m_Name: TestSettings2
   m_EditorClassIdentifier: 
-  playerHealth: 100
-  playerDamage: 20
-  playerSpeed: 4
-  playerStrikeForce: 20
-  enemyHealth: 30
-  enemyDamage: 15
-  enemySpeed: 3
-  enemyStrikeForce: 10
+  playerHealth: 0
+  playerDamage: 0
+  playerSpeed: 0
+  playerStrikeForce: 0
+  enemyHealth: 0
+  enemyDamage: 0
+  enemySpeed: 0
+  enemyStrikeForce: 0
