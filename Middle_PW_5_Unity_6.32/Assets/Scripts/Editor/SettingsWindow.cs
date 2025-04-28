@@ -68,10 +68,6 @@ public class SettingsWindow : EditorWindow
             // Загружаем файл с настройками по известному пути
             loadObject = AssetDatabase.LoadAssetAtPath<ScriptableObject>(gameSettingPath);
 
-            //Debug.Log($"loadObject.Name {loadObject.name}");
-
-           
-
             if (loadObject != null)
             {
                 gameObject = FindScriptableObjectInComponent(loadObject);
