@@ -95,8 +95,9 @@ public class SettingsWindow : EditorWindow
         if (isWork)
         {
             foreach (var obj in gameObject)
+            {
                 GUILayout.Label($"Объект {obj.name} использует ScriptableObject {loadObject.name}");
-
+            }
         }
     }
 
