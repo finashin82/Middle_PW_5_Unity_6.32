@@ -44,25 +44,8 @@ public class GiveItemPickUpAbility : MonoBehaviour, IAbilityTarget, IItem
 
         //character.Targets.Add(character.gameObject);
 
-        Debug.Log($"TargetAdd: {item}");
+        //Debug.Log($"TargetAdd: {item}");
 
         Destroy(this.gameObject);
     }
-
-    //private void OnCollisionEnter(Collision collision)
-    //{
-    //    var character = collision.gameObject.GetComponent<CharacterData>();
-
-    //    if (character == null) return;
-
-    //    var item = Instantiate(UIItem);
-
-    //    item.transform.SetParent(character.InventoryUIRoot.transform);
-
-    //    Targets.Add(item);
-
-    //    Debug.Log($"TargetAdd: {item}");
-
-    //    Destroy(this.gameObject);
-    //}
 }
