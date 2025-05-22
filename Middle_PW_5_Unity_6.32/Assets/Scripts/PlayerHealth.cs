@@ -15,16 +15,20 @@ public class PlayerHealth : MonoBehaviour, ITakeDamagePlayer
         _signalBus = signalBus;
     }
 
-    private float currentHealth;
+    [SerializeField] private int _currentHealth;
+
+    //public float CurrentHealth;
 
     void Start()
     {
-        currentHealth = _playerSettings.Health;
+        //CurrentHealth = _playerSettings.Health;
     }
 
     private void Update()
     {
-        if (currentHealth < 0) 
+        Debug.Log($"Player Health: {_currentHealth}");
+
+        if (_currentHealth < 0) 
         {
             _signalBus.Fire(new DeathPlayerSignal
             {
@@ -39,9 +43,16 @@ public class PlayerHealth : MonoBehaviour, ITakeDamagePlayer
     /// <param name="damage"></param>
     public void TakeDamagePlayer(int damage)
     {
-        if (currentHealth > 0)
+        if (_currentHealth > 0)
         {
-            currentHealth -= damage;
+            _currentHealth -= damage;
         }
+    }
+
+    public void AddHealth(int health)
+    {
+        _currentHealth += health;
+
+        Debug.Log($"Player Health: {_currentHealth}");
     }
 }

@@ -12,6 +12,7 @@ public class SettingsWindow : EditorWindow
 
     private int selectedIndex = 0;
 
+    // Путь к папке где находятся ScriptableObject
     private string assetsPath = "Assets/ScriptableObject";
 
     private ScriptableObject loadObject;

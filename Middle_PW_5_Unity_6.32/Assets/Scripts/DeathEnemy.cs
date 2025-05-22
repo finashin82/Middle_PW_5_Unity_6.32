@@ -47,7 +47,12 @@ public class DeathEnemy : MonoBehaviour
     private void DeadEnemy(DeathSignal signal)
     {
         if(signal.TargetId == MyId)
+        {
             animator.SetBool("isDead", true);
+
+            _signalBus.Fire(new ScoreSignal{ });
+        }
+            
     }
 
     /// <summary>

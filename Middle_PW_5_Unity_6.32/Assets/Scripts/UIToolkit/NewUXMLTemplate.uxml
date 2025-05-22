@@ -1,0 +1,6 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Scripts/UIToolkit/css.uss?fileID=7433441132597879392&amp;guid=afabc2ab0df61e34288960430bec95dd&amp;type=3#css" />
+    <engine:VisualElement name="Inventory" class="header" style="flex-grow: 1; width: 50%; height: 50%; top: 25%; bottom: 25%; left: 25%; right: 25%; max-height: 50%; max-width: 50%; min-width: 50%; min-height: 50%; opacity: 1; display: flex; visibility: visible; overflow: visible; -unity-background-scale-mode: scale-and-crop; background-color: rgba(64, 56, 56, 0.43); -unity-slice-scale: 0; background-size: cover; -unity-background-image-tint-color: rgb(47, 255, 255);">
+        <engine:Label text="Инвентарь" class="header" />
+    </engine:VisualElement>
+</engine:UXML>

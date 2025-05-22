@@ -1,4 +1,6 @@
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PlatformRotate : MonoBehaviour
 {
@@ -8,7 +10,9 @@ public class PlatformRotate : MonoBehaviour
 
     [SerializeField] private GameObject[] _players;
 
-    [SerializeField] private ChoicePlayerAnimation _playerAnimation;
+    [SerializeField] private VisualEffect _backlightPlayer;
+
+    private ChoicePlayerAnimation animatorPlayer;
 
     private float minDistance = float.MaxValue;
 
@@ -43,11 +47,13 @@ public class PlatformRotate : MonoBehaviour
 
     void FixedUpdate()
     {
+        animatorPlayer = _players[indexStartSelect].GetComponent<ChoicePlayerAnimation>();
+
         if (Vector3.Distance(_players[indexStartSelect].transform.position, _targetRotation.position) <= minDistance)
         {
             Rotation(direction);
 
-            _playerAnimation.ChoicePlayerOn();
+            animatorPlayer.ChoicePlayerOn();
         }
     }
 
@@ -60,6 +66,8 @@ public class PlatformRotate : MonoBehaviour
     {
         if (indexStartSelect < _players.Length && indexStartSelect + 1 != _players.Length)
         {
+            animatorPlayer.ChoicePlayerOff();
+
             minDistance = float.MaxValue;
 
             direction = 1;
@@ -76,6 +84,8 @@ public class PlatformRotate : MonoBehaviour
     {
         if (indexStartSelect > 0)
         {
+            animatorPlayer.ChoicePlayerOff();
+
             minDistance = float.MaxValue;
 
             direction = -1;

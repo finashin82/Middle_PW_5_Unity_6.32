@@ -4,7 +4,7 @@ public class ChoicePlayerAnimation : MonoBehaviour, IChoicedPlayer
 {
     private Animator animator;
 
-    private bool choice = false;
+    private string choice = "choice";
 
     private void Start()
     {
@@ -13,11 +13,11 @@ public class ChoicePlayerAnimation : MonoBehaviour, IChoicedPlayer
 
     public void ChoicePlayerOff()
     {
-        animator.SetBool("choice", false);
+        animator.SetBool(choice, false);
     }
 
     public void ChoicePlayerOn()
     {
-        animator.SetBool("choice", true);
+        animator.SetBool(choice, true);
     }
 }

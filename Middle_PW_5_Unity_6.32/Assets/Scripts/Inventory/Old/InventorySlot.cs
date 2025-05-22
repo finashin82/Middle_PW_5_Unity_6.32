@@ -1,0 +1,30 @@
+using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class InventorySlot : MonoBehaviour
+{
+    public ItemSO _item;
+
+    public int _amount;
+
+    public bool _isEmpty = true;
+
+    public GameObject iconGO;
+
+    public TMP_Text itemAmountText;
+
+    private void Awake()
+    {
+        iconGO = transform.GetChild(0).gameObject;
+
+        itemAmountText = transform.GetChild(1).GetComponent<TMP_Text>();
+    }
+
+    public void SetIcon(Sprite icon)
+    {
+        iconGO.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+
+        iconGO.GetComponent<Image>().sprite = icon;
+    }
+}
