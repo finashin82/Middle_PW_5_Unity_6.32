@@ -2,5 +2,5 @@ using UnityEngine;
 
 interface IAbilityTarget
 {
-    public void Execute();
+    public void Execute(GameObject target);
 }

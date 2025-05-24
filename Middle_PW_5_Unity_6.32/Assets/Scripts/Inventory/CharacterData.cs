@@ -12,7 +12,7 @@ public class CharacterData : MonoBehaviour
     //    _signalBus = signalBus;
     //}
 
-    public List<GameObject> Targets { get; set; } = new List<GameObject>();
+    public List<PlayerHealth> Targets { get; set; } = new List<PlayerHealth>();
 
     public GameObject InventoryUIRoot;
 

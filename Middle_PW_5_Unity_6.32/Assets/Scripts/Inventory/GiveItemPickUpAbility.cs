@@ -2,49 +2,20 @@ using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GiveItemPickUpAbility : MonoBehaviour, IAbilityTarget, IItem
+public class GiveItemPickUpAbility : MonoBehaviour
 {
     public GameObject _UIItem;
 
     public GameObject UIItem => _UIItem;
 
-    public List<GameObject> Targets { get; set; } = new List<GameObject>();
-
-    public void Execute()
-    {
-        foreach (var target in Targets) 
-        {
-            var character = target.GetComponent<CharacterData>();
-
-            if (character != null) 
-            {
-                character.Score(3);
-            }
-
-            Destroy(this.gameObject);
-        }
-    }
-
-    //public void UseItem(CharacterData data)
-    //{
-
-    //}
-
     private void OnTriggerEnter(Collider other)
     {
-        var character = other.gameObject.GetComponent<CharacterData>();
+        if (other.TryGetComponent<CharacterData>(out var characterData)) 
+        {
+            var item = Instantiate(UIItem);
 
-        if (character == null) return;
-
-        var item = Instantiate(UIItem);
-
-        //character.Targets.Add(item);
-
-        item.transform.SetParent(character.InventoryUIRoot.transform);
-
-        //character.Targets.Add(character.gameObject);
-
-        //Debug.Log($"TargetAdd: {item}");
+            item.transform.SetParent(characterData.InventoryUIRoot.transform);
+        }
 
         Destroy(this.gameObject);
     }

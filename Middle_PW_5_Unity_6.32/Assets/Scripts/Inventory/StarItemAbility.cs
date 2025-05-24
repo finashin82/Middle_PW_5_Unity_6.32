@@ -1,24 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StarItemAbility : MonoBehaviour
+public class StarItemAbility : MonoBehaviour, IAbilityTarget
 {
-    public List<PlayerHealth> Targets { get; set; } = new List<PlayerHealth>();
+    //public List<PlayerHealth> Targets { get; set; }
 
-    private void Start()
+    public void Execute(GameObject target)
     {
-        //Targets = FindObjectsByType<PlayerHealth>();
-    }
-
-    public void Execute()
-    {
-        foreach (var target in Targets)
+        if (target.TryGetComponent<PlayerHealth>(out var playerHealth))
         {
-            var character = target.GetComponent<PlayerHealth>();
-
-            if (character == null) return;
-
-            character.AddHealth(5);
+            playerHealth.AddHealth(10);
 
             Debug.Log("+");
         }
