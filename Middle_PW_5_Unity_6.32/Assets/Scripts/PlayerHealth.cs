@@ -4,24 +4,39 @@ using static Zenject.SpaceFighter.GameSettingsInstaller;
 
 public class PlayerHealth : MonoBehaviour, ITakeDamagePlayer
 {
-    private PlayerSettings _playerSettings;
+    //private PlayerSettings _playerSettings;
 
     private SignalBus _signalBus;
 
     [Inject]
-    public void Construct(PlayerSettings playerSettings, SignalBus signalBus)
+    public void Construct(/*PlayerSettings playerSettings, */SignalBus signalBus)
     {
-        _playerSettings = playerSettings;
+        //_playerSettings = playerSettings;
         _signalBus = signalBus;
     }
 
-    [SerializeField] private int _currentHealth;
+    //[SerializeField] private int _currentHealth;
 
-    //public float CurrentHealth;
+    [SerializeField] private int _maxHealth = 40;
+
+    private int _currentHealth;
 
     void Start()
     {
-        //CurrentHealth = _playerSettings.Health;
+        //_currentHealth = _playerSettings.Health;
+        _currentHealth = _maxHealth;
+    }
+
+    private void OnEnable()
+    {
+        // Подписываемся на сигнал
+        _signalBus.Subscribe<SignalPlayerHealth>(AddHealth);
+    }
+
+    private void OnDestroy()
+    {
+        // Отписываемся при уничтожении объекта
+        _signalBus.Unsubscribe<SignalPlayerHealth>(AddHealth);
     }
 
     private void Update()
@@ -49,9 +64,11 @@ public class PlayerHealth : MonoBehaviour, ITakeDamagePlayer
         }
     }
 
-    public void AddHealth(int health)
+    public void AddHealth(SignalPlayerHealth signalPlayerHealth)
     {
-        _currentHealth += health;
+        if (signalPlayerHealth == null) return;
+
+        _currentHealth += signalPlayerHealth.AmountHealth;
 
         Debug.Log($"Player Health: {_currentHealth}");
     }

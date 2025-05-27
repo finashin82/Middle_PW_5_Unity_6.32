@@ -15,7 +15,7 @@ public class LevelUpHealth : MonoBehaviour, ILevelUp
 
         //health.CurrentHealth += 10;
 
-        health.AddHealth(10);
+        //health.AddHealth(10);
     }
 
     void Start()

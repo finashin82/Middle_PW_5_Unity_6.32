@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class StarItemAbility : MonoBehaviour, IAbilityTarget
 {
+    public GameObject _Target;
     //public List<PlayerHealth> Targets { get; set; }
 
     public void Execute(GameObject target)
     {
         if (target.TryGetComponent<PlayerHealth>(out var playerHealth))
         {
-            playerHealth.AddHealth(10);
+            //playerHealth.AddHealth(10);
 
             Debug.Log("+");
         }
