@@ -7,7 +7,7 @@ public class ItemSO : ScriptableObject
     public ItemType itemType;
 
     public string itemName;
-    public int maxAmiuntItem;
+    public int maxAmountItem;
     public string itemDescription;
 
     public Sprite icon;
