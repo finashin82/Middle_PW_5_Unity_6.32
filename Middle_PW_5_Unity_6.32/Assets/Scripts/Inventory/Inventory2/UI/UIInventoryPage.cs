@@ -4,89 +4,171 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIInventoryPage : MonoBehaviour
+namespace Inventory.UI
 {
-    [SerializeField] private UIInventoryItem _itemPrefab;
-
-    [SerializeField] private RectTransform _contentPanel;
-
-    [SerializeField] private UIInventoryDescription _itemDescription;
-
-    [SerializeField] private MouseFollower _mouseFollower;
-
-    List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>();
-
-    public Sprite image;
-    public int quantity;
-    public string title, description;
-
-    private void Awake()
+    public class UIInventoryPage : MonoBehaviour
     {
-        Hide();
+        [SerializeField] private UIInventoryItem _itemPrefab;
 
-        _mouseFollower.Toggle(false);
+        [SerializeField] private RectTransform _contentPanel;
 
-        _itemDescription.ResetDescription();
-    }
+        [SerializeField] private UIInventoryDescription _itemDescription;
 
-    public void InitializeInventoryUI(int inventorySize)
-    {
-        for (int i = 0; i < inventorySize; i++)
+        [SerializeField] private MouseFollower _mouseFollower;
+
+        List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>();
+
+        private int currentlyDraggedItemIndex = -1;
+
+        public event Action<int> OnDescriptionRequested, OnItemActionRequested, OnStartDragging;
+
+        public event Action<int, int> OnSwapItems;
+
+        private void Awake()
         {
-            UIInventoryItem uiItem = Instantiate(_itemPrefab, Vector3.zero, Quaternion.identity);
+            Hide();
 
-            uiItem.transform.SetParent(_contentPanel);
+            _mouseFollower.Toggle(false);
 
-            listOfUIItems.Add(uiItem);
-
-            uiItem.OnItemClicked += HandleItemSelection;
-            uiItem.OnItemBeginDrag += HandleBeginDrag;
-            uiItem.OnItemDroppedOn += HandleSwap;
-            uiItem.OnItemEndDrag += HandleEndDrag;
-            uiItem.OnRightMouseBtnClick += HandleShowItemActions;
+            _itemDescription.ResetDescription();
         }
-    }
 
-    private void HandleShowItemActions(UIInventoryItem obj)
-    {
+        public void InitializeInventoryUI(int inventorySize)
+        {
+            for (int i = 0; i < inventorySize; i++)
+            {
+                UIInventoryItem uiItem = Instantiate(_itemPrefab, Vector3.zero, Quaternion.identity);
 
-    }
+                uiItem.transform.SetParent(_contentPanel);
 
-    private void HandleEndDrag(UIInventoryItem obj)
-    {
-        _mouseFollower.Toggle(false);
-    }
+                listOfUIItems.Add(uiItem);
 
-    private void HandleSwap(UIInventoryItem obj)
-    {
+                uiItem.OnItemClicked += HandleItemSelection;
+                uiItem.OnItemBeginDrag += HandleBeginDrag;
+                uiItem.OnItemDroppedOn += HandleSwap;
+                uiItem.OnItemEndDrag += HandleEndDrag;
+                uiItem.OnRightMouseBtnClick += HandleShowItemActions;
+            }
+        }
 
-    }
+        public void UpdateData(int itemIndex, Sprite itemImage, int itemQuantity)
+        {
+            if (listOfUIItems.Count > itemIndex)
+            {
+                listOfUIItems[itemIndex].SetData(itemImage, itemQuantity);
+            }
+        }
 
-    private void HandleBeginDrag(UIInventoryItem obj)
-    {
-        _mouseFollower.Toggle(true);
+        private void HandleShowItemActions(UIInventoryItem inventoryItemUI)
+        {
 
-        _mouseFollower.SetData(image, quantity);
-    }
+        }
 
-    private void HandleItemSelection(UIInventoryItem obj)
-    {
-        _itemDescription.SetDescription(image, title, description);
+        private void HandleEndDrag(UIInventoryItem inventoryItemUI)
+        {
+            ResetDraggtedItem();
+        }
 
-        listOfUIItems[0].Select();
-    }
+        private void HandleSwap(UIInventoryItem inventoryItemUI)
+        {
+            int index = listOfUIItems.IndexOf(inventoryItemUI);
 
-    public void Show()
-    {
-        gameObject.SetActive(true);
+            if (index == -1)
+            {
+                return;
+            }
 
-        _itemDescription.ResetDescription();
+            OnSwapItems?.Invoke(currentlyDraggedItemIndex, index);
+        }
 
-        listOfUIItems[0].SetData(image, quantity);
-    }
+        private void ResetDraggtedItem()
+        {
+            _mouseFollower.Toggle(false);
 
-    public void Hide()
-    {
-        gameObject.SetActive(false);
+            currentlyDraggedItemIndex = -1;
+        }
+
+        private void HandleBeginDrag(UIInventoryItem inventoryItemUI)
+        {
+            int index = listOfUIItems.IndexOf(inventoryItemUI);
+
+            if (index == -1) return;
+
+            currentlyDraggedItemIndex = index;
+
+            HandleItemSelection(inventoryItemUI);
+
+            OnStartDragging?.Invoke(index);
+        }
+
+        public void CreateDraggedItem(Sprite sprite, int quantity)
+        {
+            _mouseFollower.Toggle(true);
+
+            _mouseFollower.SetData(sprite, quantity);
+        }
+
+        /// <summary>
+        /// Выбор элементов инвентаря
+        /// </summary>
+        /// <param name="inventoryItemUI"></param>
+        private void HandleItemSelection(UIInventoryItem inventoryItemUI)
+        {
+            int index = listOfUIItems.IndexOf(inventoryItemUI);
+
+            if (index == -1) return;
+
+            OnDescriptionRequested?.Invoke(index);
+        }
+
+        /// <summary>
+        /// Показать окно инвентаря
+        /// </summary>
+        public void Show()
+        {
+            gameObject.SetActive(true);
+
+            ResetSelection();
+        }
+
+        /// <summary>
+        /// Сброс выбранного элемента
+        /// </summary>
+        public void ResetSelection()
+        {
+            _itemDescription.ResetDescription();
+
+            DeselectAllItems();
+        }
+
+        /// <summary>
+        /// Отмена выбора всех элементов
+        /// </summary>
+        private void DeselectAllItems()
+        {
+            foreach (UIInventoryItem item in listOfUIItems)
+            {
+                item.Deselect();
+            }
+        }
+
+        /// <summary>
+        /// Скрытие окна инвентаря
+        /// </summary>
+        public void Hide()
+        {
+            gameObject.SetActive(false);
+
+            ResetDraggtedItem();
+        }
+
+        internal void UpdateDescription(int itemIndex, Sprite itemImage, string name, string description)
+        {
+            _itemDescription.SetDescription(itemImage, name, description);
+
+            DeselectAllItems();
+
+            listOfUIItems[itemIndex].Select();
+        }
     }
 }
