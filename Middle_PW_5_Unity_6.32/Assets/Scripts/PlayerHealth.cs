@@ -6,6 +6,8 @@ public class PlayerHealth : MonoBehaviour, ITakeDamagePlayer
 {
     //private PlayerSettings _playerSettings;
 
+    public static PlayerHealth instance;
+
     private SignalBus _signalBus;
 
     [Inject]
@@ -64,6 +66,11 @@ public class PlayerHealth : MonoBehaviour, ITakeDamagePlayer
         }
     }
 
+
+    /// <summary>
+    /// Добавляем жизни через сигнал (Zenject)
+    /// </summary>
+    /// <param name="signalPlayerHealth"></param>
     public void AddHealth(SignalPlayerHealth signalPlayerHealth)
     {
         if (signalPlayerHealth == null) return;
@@ -71,5 +78,7 @@ public class PlayerHealth : MonoBehaviour, ITakeDamagePlayer
         _currentHealth += signalPlayerHealth.AmountHealth;
 
         Debug.Log($"Player Health: {_currentHealth}");
+
+        Debug.Log($"+ {signalPlayerHealth.AmountHealth} к жизни");
     }
 }

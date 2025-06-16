@@ -13,6 +13,7 @@ public class SignalInstaller : MonoInstaller
         Container.DeclareSignal<DeathPlayerSignal>();
         Container.DeclareSignal<ScoreSignal>();
         Container.DeclareSignal<SignalPlayerHealth>();
+        Container.DeclareSignal<SignalPlayerForce>();
 
         // Регистрируем классы в которых будет использоваться сигнал
         Container.Bind<EnemyHealth>().AsSingle();
@@ -20,6 +21,7 @@ public class SignalInstaller : MonoInstaller
         Container.Bind<PlayerHealth>().AsSingle();
         Container.Bind<DeathPlayer>().AsSingle();
         Container.Bind<CharacterData>().AsSingle();
-        Container.Bind<ClickImage>().AsSingle();
+        Container.Bind<ClickFirstAid>().AsSingle();
+        Container.Bind<PlayerAttack>().AsSingle();
     }
 }
