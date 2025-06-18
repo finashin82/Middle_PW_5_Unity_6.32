@@ -26,7 +26,7 @@ public class CharacterData : MonoBehaviour
 
     private PlayerHealth playerHealth;
 
-    private List<IItem> items;
+    private List<IItem22> items;
 
     private void Start()
     {

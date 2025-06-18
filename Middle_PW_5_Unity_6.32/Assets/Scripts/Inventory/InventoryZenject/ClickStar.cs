@@ -1,8 +1,12 @@
 using UnityEngine;
 using Zenject;
 
-public class Star : MonoBehaviour
+public class ClickStar : MonoBehaviour
 {
+    public class Factory : PlaceholderFactory<ClickStar>
+    {
+    }
+
     private SignalBus _signalBus;
 
     [Inject]
@@ -30,5 +34,8 @@ public class Star : MonoBehaviour
         }
     }
 
-
+    //public void OnCollected()
+    //{
+    //    SignalForce();
+    //}
 }

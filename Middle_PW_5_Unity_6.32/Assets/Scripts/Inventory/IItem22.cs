@@ -1,6 +1,6 @@
 using UnityEngine;
 
-interface IItem
+interface IItem22
 {
     GameObject UIItem { get; }
 
