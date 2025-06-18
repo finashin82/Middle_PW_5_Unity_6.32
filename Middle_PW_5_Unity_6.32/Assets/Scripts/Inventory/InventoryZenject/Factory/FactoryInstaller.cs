@@ -13,6 +13,6 @@ public class FactoryInstaller : MonoInstaller
         Container.BindFactory<ClickStar, ClickStar.Factory>().FromComponentInNewPrefab(_starPrefab).UnderTransformGroup("Stars");
 
         // Регистрация фабрики для Аптечки
-        Container.BindFactory<ClickFirstAid, ClickFirstAid.Factory>().FromComponentInNewPrefab(_firstAidPrefab).UnderTransformGroup("Stars");
+        Container.BindFactory<ClickFirstAid, ClickFirstAid.Factory>().FromComponentInNewPrefab(_firstAidPrefab).UnderTransformGroup("FirstAid");
     }
 }
