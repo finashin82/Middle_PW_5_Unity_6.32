@@ -3,10 +3,6 @@ using Zenject;
 
 public class ClickFirstAid : MonoBehaviour
 {
-    public class Factory : PlaceholderFactory<ClickFirstAid>
-    {
-    }
-
     private SignalBus _signalBus;
 
     [Inject]

@@ -3,10 +3,6 @@ using Zenject;
 
 public class ClickStar : MonoBehaviour
 {
-    public class Factory : PlaceholderFactory<ClickStar>
-    {
-    }
-
     private SignalBus _signalBus;
 
     [Inject]

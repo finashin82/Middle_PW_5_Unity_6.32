@@ -3,13 +3,9 @@ using Zenject;
 
 public class TakeObject : MonoBehaviour
 {
-    //[SerializeField] private GameObject _prefabItem;
-
     [SerializeField] private PrefabType _itemType;
 
     private IItemFactory _itemFactory;
-
-    //private IInventory _inventory;
 
     [Inject]
     public void Construct(IItemFactory itemFactory)
