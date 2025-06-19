@@ -33,9 +33,4 @@ public class ClickFirstAid : MonoBehaviour
             Debug.Log("Сигнал не отправлен");
         }
     }
-
-    //public void OnCollected()
-    //{
-    //    SignalHealth();
-    //}
 }

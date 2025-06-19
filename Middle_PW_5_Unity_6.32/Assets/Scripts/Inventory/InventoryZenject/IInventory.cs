@@ -2,5 +2,5 @@ using UnityEngine;
 
 public interface IInventory
 {
-    public void AddItem();
+    public void AddItem(GameObject gameObject);
 }

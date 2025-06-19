@@ -33,9 +33,4 @@ public class ClickStar : MonoBehaviour
             Debug.Log("Сигнал не отправлен");
         }
     }
-
-    //public void OnCollected()
-    //{
-    //    SignalForce();
-    //}
 }

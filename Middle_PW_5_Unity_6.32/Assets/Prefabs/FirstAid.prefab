@@ -122,7 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33f9e00654d9c934d894ff15a2847a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefabItem: {fileID: 2220317108264761013, guid: c1e05029f26c1d74f853834d0d2f7b1d, type: 3}
+  _itemType: 1
 --- !u!114 &2713259484099894118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eb2705e83b3c9347b9049bf07392480, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _timeRotate: 6
 --- !u!1 &726941565448273298
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _topTarget: {fileID: 4070253207174600063}
   _downTarget: {fileID: 82368894782646715}
-  speedMove: 3
+  _timeMove: 3
 --- !u!1 &2572269350856451095
 GameObject:
   m_ObjectHideFlags: 0

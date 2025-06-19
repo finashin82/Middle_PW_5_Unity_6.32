@@ -3,23 +3,27 @@ using Zenject;
 
 public class TakeObject : MonoBehaviour
 {
-    [SerializeField] GameObject prefabItem;
-    //[SerializeField] private IItem _item;
+    //[SerializeField] private GameObject _prefabItem;
 
-    private IInventory _inventory;
+    [SerializeField] private PrefabType _itemType;
+
+    private IItemFactory _itemFactory;
+
+    //private IInventory _inventory;
 
     [Inject]
-    public void Construct(IInventory inventory)
+    public void Construct(IItemFactory itemFactory)
     {
-        _inventory = inventory;
+        _itemFactory = itemFactory;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.TryGetComponent<IInventory>(out var inventory))
         {
-            //_item.OnCollected();
-            inventory.AddItem();
+            var item = _itemFactory.Create(_itemType);
+
+            inventory.AddItem(item);
 
             Destroy(this.gameObject);
         }
