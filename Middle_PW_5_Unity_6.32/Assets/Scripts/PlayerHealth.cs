@@ -41,28 +41,20 @@ public class PlayerHealth : MonoBehaviour, ITakeDamagePlayer
         _signalBus.Unsubscribe<SignalPlayerHealth>(AddHealth);
     }
 
-    private void Update()
-    {
-        Debug.Log($"Player Health: {_currentHealth}");
-
-        if (_currentHealth < 0) 
-        {
-            _signalBus.Fire(new DeathPlayerSignal
-            {
-
-            });
-        }
-    }
-
     /// <summary>
     /// Урон игроку
     /// </summary>
     /// <param name="damage"></param>
     public void TakeDamagePlayer(int damage)
     {
-        if (_currentHealth > 0)
+        _currentHealth -= damage;
+
+        if (_currentHealth <= 0)
         {
-            _currentHealth -= damage;
+            _signalBus.Fire(new DeathPlayerSignal
+            {
+
+            });
         }
     }
 

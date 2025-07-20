@@ -3,16 +3,6 @@ using Zenject;
 
 public class EnemyAttack : MonoBehaviour
 {
+    // Не правильно сделанная инъекция, нужно через метод Construct
     [Inject] private EnemySettings _enemySettings;
-
-    void Start()
-    {
-        //Debug.Log($"Enemy Strike Force: {_enemySettings.StrikeForce}");
-        //Debug.Log($"Enemy Speed: {_enemySettings.Speed}");        
-    }
-
-    void Update()
-    {
-        
-    }
 }
