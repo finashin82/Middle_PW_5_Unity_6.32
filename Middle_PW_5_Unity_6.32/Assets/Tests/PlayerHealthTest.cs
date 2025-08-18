@@ -19,11 +19,11 @@ public class PlayerHealthTest
 
         var health = testObject.AddComponent<PlayerHealth>();
 
-        health.Construct(fakeHealthView, maxHealth);
+        //health.Construct(fakeHealthView, maxHealth);
 
         health.TakeDamagePlayer(damageAmount);
 
-        UnityEngine.Assertions.Assert.AreEqual(expectedHealth, health.);
+        UnityEngine.Assertions.Assert.AreEqual(expectedHealth, health._currentHealth);
     }
 
     
