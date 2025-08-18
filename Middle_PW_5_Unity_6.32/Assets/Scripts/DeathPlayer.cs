@@ -42,5 +42,7 @@ public class DeathPlayer : MonoBehaviour
     public void Die()
     {
         Debug.Log("Конец игры.");
+
+        Destroy(gameObject);
     }
 }

@@ -21,7 +21,7 @@ public class PlayerHealth : MonoBehaviour, ITakeDamagePlayer
 
     [SerializeField] private int _maxHealth = 40;
 
-    private int _currentHealth;
+    public int _currentHealth;
 
     void Start()
     {
