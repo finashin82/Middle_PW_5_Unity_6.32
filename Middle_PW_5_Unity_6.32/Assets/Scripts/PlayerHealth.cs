@@ -6,6 +6,8 @@ public class PlayerHealth : MonoBehaviour, ITakeDamagePlayer
 {
     //private PlayerSettings _playerSettings;
 
+    public bool IsDead = false;
+
     public static PlayerHealth instance;
 
     private SignalBus _signalBus;
@@ -51,6 +53,10 @@ public class PlayerHealth : MonoBehaviour, ITakeDamagePlayer
 
         if (_currentHealth <= 0)
         {
+            _currentHealth = 0;
+
+            IsDead = true;
+
             _signalBus.Fire(new DeathPlayerSignal
             {
 
@@ -72,5 +78,16 @@ public class PlayerHealth : MonoBehaviour, ITakeDamagePlayer
         Debug.Log($"Player Health: {_currentHealth}");
 
         Debug.Log($"+ {signalPlayerHealth.AmountHealth} к жизни");
+    }
+
+    public void Heal(int heal)
+    {
+        _currentHealth += heal;
+
+        _currentHealth = Mathf.Min(_currentHealth, _maxHealth);
+
+        Debug.Log($"Player Health: {_currentHealth}");
+
+        Debug.Log($"+ {heal} к жизни");
     }
 }

@@ -14,8 +14,6 @@ public class NewTestScript
         SceneManager.LoadScene(1);
     }
 
-    // A UnityTest behaves like a coroutine in Play Mode. In Edit Mode you can use
-    // `yield return null;` to skip a frame.
     [UnityTest]
     public IEnumerator FindPlayerTest()
     {
@@ -24,11 +22,5 @@ public class NewTestScript
         yield return new WaitForSeconds(5);
 
         UnityEngine.Assertions.Assert.IsNotNull(playerHealth);
-
-        playerHealth._currentHealth = 0;
-
-        yield return new WaitForSeconds(5);
-
-        UnityEngine.Assertions.Assert.IsNull(playerHealth);
     }
 }

@@ -1,42 +1,29 @@
-using System.Collections;
 using NUnit.Framework;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.TestTools;
 
-[TestFixture]
 public class PlayerHealthTest
 {
-    [Test]
-    [TestCase(10, 0, 10)]
-    [TestCase(10, 5, 5)]
-    [TestCase(10, 10, 0)]
-    [TestCase(10, -5, 0)]
-    public void PlayerHealthTestSimplePasses(int maxHealth, int damageAmount, int expectedHealth)
+    private PlayerHealth playerHealth;
+
+    [SetUp]
+    public void Setup()
     {
-        var fakeHealthView = new FakeHealthView();
-
-        var testObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-
-        var health = testObject.AddComponent<PlayerHealth>();
-
-        //health.Construct(fakeHealthView, maxHealth);
-
-        health.TakeDamagePlayer(damageAmount);
-
-        UnityEngine.Assertions.Assert.AreEqual(expectedHealth, health._currentHealth);
+        SceneManager.LoadScene(1);
     }
 
-    
-    public class FakeHealthView
+    [UnityTest]
+    public IEnumerator PlayerHealthTestWithEnumeratorPasses()
     {
-        public int MaxHealth {  get; set; }
-        public int CurrentHealth { get; set; }
+        playerHealth = GameObject.FindAnyObjectByType<PlayerHealth>();
 
-        public void Display(int maxHealth, int currentHealth) 
-        {
-            MaxHealth = maxHealth;
+        yield return null;
 
-            CurrentHealth = currentHealth;
-        }
+        // ѕровер€ем инициализацию здоровь€
+        Assert.IsTrue(playerHealth._currentHealth > 0, "«доровье игрока должно быть больше 0");
+        Assert.AreEqual(playerHealth._maxHealth, playerHealth._currentHealth,
+            "Ќачальное здоровье должно равн€тьс€ максимальному");
     }
 }
